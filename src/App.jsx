@@ -1,25 +1,12 @@
-import { useState } from 'react'
 import './App.css'
+import { Home } from './pages/home'
 
 function App() {
-
-
   return (
-    <div className='app'>
-      <header>
-        <div>
-          <h1>
-            Matching Game
-          </h1>
-          <div>
-            <button className='icon'>profile</button>
-            <button className='icon'>settings</button>
-          </div>
-        </div>
-      </header>
-
+    <div>
+      <Home />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
