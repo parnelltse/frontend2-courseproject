@@ -1,18 +1,21 @@
 import React from 'react';
+import AccountForm from '../components/AccountForm'
 
-export default function Login() {
+const Login = () => {
+    const handleLogin = (data) => {
+        console.log('User logged in:', data);
+    };
+
     return (
-        <div>
+        <div style={{ padding: '20px' }}>
             <header>
                 <h1>Matching Game</h1>
-                <h2>Account Login</h2>
+                <h2>Login</h2>
             </header>
-            <form>
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
-                <button type="submit">Login</button>
-            </form>
+            <AccountForm onSubmit={handleLogin} buttonText="Login" />
         </div>
     );
-}
+};
+
+export default Login;
 
