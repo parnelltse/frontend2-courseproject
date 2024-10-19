@@ -1,5 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 
 export function Landing () {
+  const navigate = useNavigate();
+
     return(
         <div className='app'>
       <header>
@@ -10,8 +13,8 @@ export function Landing () {
 
           <div>
             <nav>
-              <button>Create Account</button>
-              <button>Login</button>
+            <button onClick={() => navigate('/create')}>Create Account</button>
+            <button onClick={() => navigate('/login')}>Login</button>
             </nav>
           </div>
         </div>
