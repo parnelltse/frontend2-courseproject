@@ -1,0 +1,17 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: o auto;
+  min-height: 100%;
+  justify-content: space-between;
+}
+
+header {
+  padding: 0 2em;
+}
+
+h1 { 
+  padding: 0;
+  margin: 0;
+}
