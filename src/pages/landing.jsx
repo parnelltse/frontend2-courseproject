@@ -1,5 +1,5 @@
 
-export function Login () {
+export function Landing () {
     return(
         <div className='app'>
       <header>

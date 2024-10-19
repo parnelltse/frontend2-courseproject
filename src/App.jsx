@@ -1,11 +1,11 @@
 import './App.css'
-import { Login } from './pages/login'
+import { Landing} from './pages/landing'
 
 function App() {
 
 
   return (
-   <Login />
+   <Landing />
   )
 }
 
