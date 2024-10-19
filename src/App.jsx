@@ -1,11 +1,16 @@
 import './App.css'
-import { Landing} from './pages/landing'
+import { BrowserRouter as Routers, Routes, Route } from 'react-router-dom'
+import { Landing } from './pages/landing'
 
 function App() {
 
 
   return (
-   <Landing />
+   <Routers>
+    <Routes>
+      <Route path="/" element={<Landing/>} />
+    </Routes>
+   </Routers>
   )
 }
 

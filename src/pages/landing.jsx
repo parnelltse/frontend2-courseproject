@@ -6,9 +6,6 @@ export function Landing () {
         <div>
           <h1>
             Matching Game
-            <div>
-            <button className='icon'>profile</button>
-          </div>
           </h1>
 
           <div>
