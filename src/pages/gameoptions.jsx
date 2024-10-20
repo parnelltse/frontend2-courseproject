@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../components/BackButton'; 
 
 export default function Gameoptions() {
     const navigate = useNavigate(); 
@@ -9,10 +10,10 @@ export default function Gameoptions() {
                 <h1>Matching Game</h1>
             </header>
 
-            <button>Single Player</button>
-            <button>Multi Player</button>
-            <button>Resume Game</button>
-            <button onClick={() => navigate(-1)}>Back</button> 
+            <button onClick={() => navigate ('/singleplayer')}>Single Player</button>
+            <button onClick={() => navigate ('/multiplayer')}>Multi Player</button>
+            <button onClick={() => navigate ('/resumegame')}>Resume Game</button>
+           <BackButton />
         </div>
     );
 }

@@ -1,17 +1,12 @@
-// AccountForm.jsx
 import React, { useState } from 'react';
 
-const AccountForm = ({ onSubmit, buttonText }) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+export default function AccountForm({ onSubmit, buttonText }) {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState(""); 
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (onSubmit) {
-            onSubmit({ username, password });
-        }
-        setUsername('');
-        setPassword('');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onSubmit({ username, password }); // Pass both username and password to the parent
     };
 
     return (
@@ -20,17 +15,15 @@ const AccountForm = ({ onSubmit, buttonText }) => {
                 type="text"
                 placeholder="Username"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)} 
             />
             <input
-                type="password"
+                type="password" 
                 placeholder="Password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)} 
             />
-            <button type="submit">{buttonText}</button> 
+            <button type="submit">{buttonText}</button>
         </form>
     );
-};
-
-export default AccountForm;
+}
