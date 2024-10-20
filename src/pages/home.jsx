@@ -8,14 +8,20 @@ export default function Home() {
             <header>
                 <h1>Matching Game</h1>
                 <div>
-                    <button>Profile</button>
+                    <button onClick={() => {
+                        navigate('/profilesettings')
+                    }}>Profile</button>
                 </div>
             </header>
 
             <button onClick={() => {
                 navigate('/gameoptions');
             }}>Play</button>
-            <button>Settings</button>
+
+            <button onClick={() => {
+                navigate('/appsettings')
+            }}>
+                Settings</button>
         </div>
     );
 }
