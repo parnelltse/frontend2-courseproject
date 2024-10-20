@@ -1,9 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import AccountForm from '../components/AccountForm'
 
 const Login = () => {
+    const navigate = useNavigate(); 
     const handleLogin = (data) => {
         console.log('User logged in:', data);
+
+        navigate('/home'); // Redirect to the home page
+
     };
 
     return (

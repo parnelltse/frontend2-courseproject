@@ -1,9 +1,13 @@
 import React from 'react';
-import AccountForm from '../components/AccountForm'
+import { useNavigate } from 'react-router-dom'; 
+import AccountForm from '../components/AccountForm'; 
 
 export default function Create() {
+    const navigate = useNavigate(); 
     const handleAccountCreation = (data) => {
-        console.log('Account created:', data); 
+        console.log('Account created:', data);
+        
+        navigate('/home'); // Redirect to the home page
     };
 
     return (
