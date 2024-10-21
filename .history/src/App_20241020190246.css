@@ -178,7 +178,6 @@ button.back-btn:hover {
 .app-settings {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	padding: 20px;
 	text-align: center;
@@ -191,7 +190,6 @@ button.back-btn:hover {
 	justify-content: center;
 	flex-direction: column;
 	margin: auto;
-	align-items: center;
 }
 
 .theme-toggle {

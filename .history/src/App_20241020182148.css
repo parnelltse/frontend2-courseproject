@@ -7,20 +7,21 @@
 
 /* Home page */
 .container {
+	display: flex;
+	flex-direction: column;
 	align-items: center; /* Center the items horizontally */
 	justify-content: center; /* Center the items vertically */
 	min-height: 100vh; /* Full viewport height */
 	background-color: #e3f2fd; /* Light blue background color */
 	padding: 20px; /* Padding around content */
-	padding-top: 15vh;
 }
 
 header {
 	text-align: center;
 	margin-bottom: 40px; /* Space below header */
 	margin: auto;
+	padding-top: 30vh;
 }
-
 button {
 	background-color: #1e88e5; /* Button background color */
 	color: white; /* White text color */
@@ -62,7 +63,6 @@ button:hover {
 	transition: background-color 0.3s; /* Smooth background transition */
 	width: 155px; /* Ensure the width matches other buttons */
 	height: 50px; /* Ensure the height matches other buttons */
-	margin-bottom: 20vh;
 }
 
 .profile-button:hover {
@@ -77,28 +77,17 @@ button:hover {
 .play-button,
 .settings-button {
 	background-color: #03dac6; /* Secondary color */
+	color: white; /* White text */
 	border: none;
 	border-radius: 5px;
 	padding: 15px 25px; /* Button padding */
 	font-size: 1.5rem; /* Font size */
 	cursor: pointer; /* Pointer cursor on hover */
 	transition: background-color 0.3s; /* Smooth background transition */
-	align-items: center;
-	text-align: center;
-}
-
-.play-button {
-	color: rgb(74, 96, 86); /* darker text */
-}
-
-.settings-button {
-	color: white; /* white text */
 }
 
 .play-button:hover {
 	background-color: #018786; /* Darker shade on hover */
-	color: white; /* white text */
-
 }
 
 .settings-button {
@@ -178,20 +167,9 @@ button.back-btn:hover {
 .app-settings {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	padding: 20px;
 	text-align: center;
-	min-height: 100vh;
-	padding-top: 20vh;
-}
-
-.setting-bottons {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	margin: auto;
-	align-items: center;
 }
 
 .theme-toggle {
@@ -473,11 +451,13 @@ tr:hover {
 
 /* login page */
 .login-container {
-	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	justify-content: center;
 	min-height: 100vh; /* Full viewport height */
 	background-color: #ede3fd; /* Light blue background color */
-	padding-top: 20vh;
+	padding: 20px; /* Padding around content */
 }
 
 .login-header {

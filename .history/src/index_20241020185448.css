@@ -27,13 +27,6 @@
     margin: auto;
     align-items: center;
     background-color: #03dac6;
-    color: rgb(74, 96, 86); /* darker text */
-}
-
-.single-btn:hover {
-    background-color: #018786;
-    color: white;
-
 }
 
 .single-container {

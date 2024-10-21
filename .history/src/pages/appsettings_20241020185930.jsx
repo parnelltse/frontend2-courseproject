@@ -22,12 +22,10 @@ export default function AppSettings() {
 	return (
 		<div className="app-settings" style={appStyles}>
 			<h1>App Settings</h1>
-			<div className="setting-bottons">
-				<button className="theme-toggle" onClick={toggleTheme}>
-					{isDarkMode ? "Light" : "Dark"} Mode
-				</button>
-				<BackButton />
-			</div>
+			<button className="theme-toggle" onClick={toggleTheme}>
+				{isDarkMode ? "Light" : "Dark"} Mode
+			</button>
+			<BackButton />
 		</div>
 	);
 }
