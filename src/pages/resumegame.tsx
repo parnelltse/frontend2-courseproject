@@ -1,15 +1,16 @@
-// not sure why there is a red underline saying an error for the image location
+import React from "react";
+import BackButton from "../components/BackButton";
+import "../App.css";
 
-import React from 'react';
-import BackButton from '../components/BackButton';
-import gameImage from '../assets/gameimage.png'
-
-export default function ResumeGame() {
-    return (
-        <div>
-            <h1>Resume Game</h1>
-            <img src={gameImage} alt="Game" />
-            <BackButton />
-        </div>
-    );
+export default function MultiGame() {
+	return (
+		<div className="game-grid">
+			{Array.from({ length: 25 }).map((_, index) => (
+				<div className="game-item" key={index}>
+					Card {index + 1}
+				</div>
+			))}
+			<BackButton />
+		</div>
+	);
 }

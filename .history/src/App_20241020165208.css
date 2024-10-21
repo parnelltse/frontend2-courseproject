@@ -1,0 +1,479 @@
+/* General Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Home page */
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh; /* Full viewport height */
+	background-color: #f9f9f9; /* Light background color */
+}
+
+header {
+	text-align: center;
+	margin-bottom: 40px; /* Space below header */
+}
+
+.title {
+	font-size: 3rem; /* Larger title font */
+	color: #333; /* Darker text color */
+}
+
+.profile-button {
+	background-color: #6200ea; /* Primary color */
+	color: white; /* White text */
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px; /* Button padding */
+	font-size: 1.2rem; /* Font size */
+	cursor: pointer; /* Pointer cursor on hover */
+	transition: background-color 0.3s; /* Smooth background transition */
+}
+.profile-button:hover {
+	background-color: #3700b3; /* Darker shade on hover */
+}
+
+.button-container {
+	display: flex;
+	gap: 20px; /* Space between buttons */
+}
+
+.play-button,
+.settings-button {
+	background-color: #03dac6; /* Secondary color */
+	color: white; /* White text */
+	border: none;
+	border-radius: 5px;
+	padding: 15px 25px; /* Button padding */
+	font-size: 1.5rem; /* Font size */
+	cursor: pointer; /* Pointer cursor on hover */
+	transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.play-button:hover {
+	background-color: #018786; /* Darker shade on hover */
+}
+
+.settings-button {
+	background-color: #ff5722; /* Different color for settings */
+}
+
+.settings-button:hover {
+	background-color: #c41c00; /* Darker shade on hover */
+}
+
+/* Typography */
+h1 {
+	font-size: 2.5rem;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+h2 {
+	font-size: 1.75rem;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+/* Button Styles */
+button {
+	background-color: #6200ea;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 10px;
+	transition: background-color 0.3s ease;
+}
+
+button:hover {
+	background-color: #3700b3;
+}
+
+/* Form Input Styles */
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+}
+
+form {
+	max-width: 400px;
+	margin: 20px auto;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Back Button */
+button.back-btn {
+	background-color: #f44336;
+	color: white;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2rem;
+}
+
+button.back-btn:hover {
+	background-color: #e53935;
+}
+
+/* App Settings */
+.app-settings {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	text-align: center;
+}
+
+.theme-toggle {
+	background-color: #333;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.theme-toggle:hover {
+	background-color: #555;
+}
+
+/* Game Options */
+.game-options {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 20px;
+}
+
+button.grid-size {
+	background-color: #2196f3;
+	margin: 5px;
+}
+
+button.grid-size:hover {
+	background-color: #1976d2;
+}
+
+/* single and multiplayer pages */
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
+
+.game-grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr); /* 5 columns for a 5x5 grid */
+	gap: 10px; /* Space between grid items */
+	padding: 20px; /* Optional padding around the grid */
+}
+
+.game-item {
+	background-color: #c5d9e8; /* Background color for game items */
+	border: 1px solid #100f0f; /* Border for each game item */
+	border-radius: 5px; /* Rounded corners */
+	display: flex; /* Center content */
+	align-items: center; /* Center content vertically */
+	justify-content: center; /* Center content horizontally */
+	height: 100px; /* Fixed height for game items */
+	font-size: 1.2em; /* Font size for game item text */
+}
+
+/* history page */
+
+.history-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh; /* Full viewport height */
+	background-color: #f9f9f9; /* Light background color */
+	padding: 20px; /* Padding around content */
+}
+
+.history-title {
+	font-size: 2.5rem; /* Title font size */
+	color: #333; /* Darker text color */
+	margin-bottom: 10px; /* Space below title */
+}
+
+.history-description {
+	font-size: 1.2rem; /* Description font size */
+	color: #666; /* Slightly lighter text color */
+	text-align: center; /* Center-align description */
+	margin-bottom: 30px; /* Space below description */
+}
+
+.score-table {
+	width: 100%;
+	max-width: 600px; /* Max width for the table */
+	margin: 0 auto; /* Center the table */
+	background-color: white; /* White background for the table */
+	border-radius: 8px; /* Rounded corners */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+	overflow: hidden; /* Ensure rounded corners apply */
+}
+
+table {
+	width: 100%; /* Full width of the table */
+	border-collapse: collapse; /* Remove space between table cells */
+}
+
+th,
+td {
+	padding: 15px; /* Cell padding */
+	text-align: left; /* Align text to the left */
+	border-bottom: 1px solid #e0e0e0; /* Bottom border for rows */
+}
+
+th {
+	background-color: #6200ea; /* Header background color */
+	color: white; /* White text for header */
+}
+
+tr:hover {
+	background-color: #f1f1f1; /* Highlight row on hover */
+}
+
+.back-button {
+	margin-top: 20px; /* Space above the back button */
+}
+
+/* profile settings page*/
+
+.profile-settings-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh; /* Full viewport height */
+	background-color: #f9f9f9; /* Light background color */
+	padding: 20px; /* Padding around content */
+}
+
+.profile-settings-title {
+	font-size: 2.5rem; /* Title font size */
+	color: #333; /* Darker text color */
+	margin-bottom: 20px; /* Space below title */
+}
+
+.submitted-username {
+	font-size: 1.5rem; /* Font size for submitted username */
+	color: #6200ea; /* Color for submitted username */
+	margin-bottom: 20px; /* Space below username display */
+}
+
+.profile-settings-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Center align the form elements */
+	margin-bottom: 20px; /* Space below the form */
+}
+
+.username-input {
+	padding: 10px; /* Padding for input */
+	font-size: 1rem; /* Font size for input */
+	border: 1px solid #ccc; /* Border for input */
+	border-radius: 4px; /* Rounded corners */
+	margin-bottom: 10px; /* Space below input */
+	width: 100%; /* Full width */
+	max-width: 300px; /* Max width for input */
+}
+
+.save-button {
+	padding: 10px 20px; /* Padding for button */
+	background-color: #6200ea; /* Button background color */
+	color: white; /* Button text color */
+	border: none; /* Remove border */
+	border-radius: 4px; /* Rounded corners */
+	cursor: pointer; /* Pointer cursor on hover */
+	font-size: 1rem; /* Font size for button */
+}
+
+.save-button:hover {
+	background-color: #3700b3; /* Darker button color on hover */
+}
+
+.navigation-buttons {
+	display: flex;
+	gap: 10px; /* Space between navigation buttons */
+}
+
+.scores-button {
+	padding: 10px 20px; /* Padding for button */
+	background-color: #03dac6; /* Button background color */
+	color: white; /* Button text color */
+	border: none; /* Remove border */
+	border-radius: 4px; /* Rounded corners */
+	cursor: pointer; /* Pointer cursor on hover */
+	font-size: 1rem; /* Font size for button */
+}
+
+.scores-button:hover {
+	background-color: #018786; /* Darker button color on hover */
+}
+
+/* game options page */
+
+.game-options-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh; /* Full viewport height */
+	background-color: #f0f4f8; /* Light background color */
+	padding: 20px; /* Padding around content */
+}
+
+.game-options-title {
+	font-size: 2.5rem; /* Title font size */
+	color: #333; /* Darker text color */
+	margin-bottom: 40px; /* Space below title */
+}
+
+.game-options-buttons {
+	display: flex;
+	flex-direction: column; /* Arrange buttons vertically */
+	gap: 15px; /* Space between buttons */
+}
+
+.game-option-button {
+	padding: 15px 30px; /* Padding for buttons */
+	font-size: 1.2rem; /* Font size for buttons */
+	background-color: #6200ea; /* Button background color */
+	color: white; /* Button text color */
+	border: none; /* Remove border */
+	border-radius: 5px; /* Rounded corners */
+	cursor: pointer; /* Pointer cursor on hover */
+	transition: background-color 0.3s; /* Smooth background transition */
+	width: 100%; /* Full width */
+	max-width: 300px; /* Max width for buttons */
+}
+
+.game-option-button:hover {
+	background-color: #3700b3; /* Darker button color on hover */
+}
+
+/* create account page */
+
+.create-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh; /* Full viewport height */
+	background-color: #f0f4f8; /* Light background color */
+	padding: 20px; /* Padding around content */
+}
+
+.create-header {
+	text-align: center; /* Center header text */
+	margin-bottom: 40px; /* Space below header */
+}
+
+.create-header h1 {
+	font-size: 2.5rem; /* Title font size */
+	color: #000000; /* Primary color for title */
+}
+
+.create-header h2 {
+	font-size: 1.5rem; /* Subtitle font size */
+	color: #333; /* Darker color for subtitle */
+	margin-top: 10px; /* Space above subtitle */
+}
+
+.create-container > * {
+	margin: 10px 0; /* Space between elements */
+}
+
+.back-button {
+	margin-top: 20px; /* Space above back button */
+	background-color: #6200ea; /* Match primary color */
+	color: white; /* White text color */
+	border: none; /* Remove border */
+	border-radius: 5px; /* Rounded corners */
+	padding: 10px 20px; /* Padding for button */
+	cursor: pointer; /* Pointer cursor */
+	transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.back-button:hover {
+	background-color: #3700b3; /* Darker button color on hover */
+}
+
+/* login page */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    background-color: #e3f2fd; /* Light blue background color */
+    padding: 20px; /* Padding around content */
+}
+
+.login-header {
+    text-align: center; /* Center header text */
+    margin-bottom: 40px; /* Space below header */
+}
+
+.login-header h1 {
+    font-size: 2.5rem; /* Title font size */
+    color: #1e88e5; /* Primary color for title */
+}
+
+.login-header h2 {
+    font-size: 1.5rem; /* Subtitle font size */
+    color: #424242; /* Darker color for subtitle */
+    margin-top: 10px; /* Space above subtitle */
+}
+
+.account-form {
+    width: 100%; /* Full width for the form */
+    max-width: 400px; /* Maximum width for the form */
+    background-color: white; /* White background for form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Padding inside the form */
+}
+
+button {
+    background-color: #1e88e5; /* Match primary color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Smooth background transition */
+    width: 100%; /* Full width button */
+}
+
+button:hover {
+    background-color: #1565c0; /* Darker button color on hover */
+}
+
+.account-form input {
+    margin: 10px 0; /* Space between inputs */
+    padding: 10px; /* Padding for inputs */
+    border: 1px solid #ccc; /* Light border for inputs */
+    border-radius: 5px; /* Rounded corners for inputs */
+    width: 100%; /* Full width for inputs */
+}

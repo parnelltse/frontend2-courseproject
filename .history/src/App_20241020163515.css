@@ -1,0 +1,144 @@
+/* General Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Global container for centering content */
+.container {
+	width: 90%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+/* Typography */
+h1 {
+	font-size: 2.5rem;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+h2 {
+	font-size: 1.75rem;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+/* Button Styles */
+button {
+	background-color: #4caf50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 10px;
+	transition: background-color 0.3s ease;
+}
+
+button:hover {
+	background-color: #45a049;
+}
+
+/* Form Input Styles */
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+}
+
+form {
+	max-width: 400px;
+	margin: 20px auto;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Back Button */
+button.back-btn {
+	background-color: #f44336;
+	color: white;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2rem;
+}
+
+button.back-btn:hover {
+	background-color: #e53935;
+}
+
+/* App Settings */
+.app-settings {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	text-align: center;
+}
+
+.theme-toggle {
+	background-color: #333;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.theme-toggle:hover {
+	background-color: #555;
+}
+
+/* Game Options */
+.game-options {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 20px;
+}
+
+button.grid-size {
+	background-color: #2196f3;
+	margin: 5px;
+}
+
+button.grid-size:hover {
+	background-color: #1976d2;
+}
+
+/* Game Images */
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns for a 5x5 grid */
+    gap: 10px; /* Space between grid items */
+    padding: 20px; /* Optional padding around the grid */
+}
+
+.game-item {
+    background-color: #d0e5f5; /* Background color for game items */
+    border: 1px solid #ccc; /* Border for each game item */
+    border-radius: 5px; /* Rounded corners */
+    display: flex; /* Center content */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    height: 100px; /* Fixed height for game items */
+    font-size: 1.2em; /* Font size for game item text */
+}
+
