@@ -31,8 +31,7 @@
 }
 
 .single-btn:hover {
-    background-color: #018786;
-    color: white;
+    background-color: rgb(74, 96, 86); /* darker text */
 
 }
 

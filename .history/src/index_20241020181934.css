@@ -1,0 +1,11 @@
+/** landing page */
+
+.landing-cointainer {
+    margin: auto;
+}
+
+.app {
+    min-width: 100vw;
+    min-height: 100vh;
+}
+

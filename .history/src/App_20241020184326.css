@@ -97,7 +97,6 @@ button:hover {
 
 .play-button:hover {
 	background-color: #018786; /* Darker shade on hover */
-	color: white; /* white text */
 
 }
 
@@ -178,20 +177,9 @@ button.back-btn:hover {
 .app-settings {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	padding: 20px;
 	text-align: center;
-	min-height: 100vh;
-	padding-top: 20vh;
-}
-
-.setting-bottons {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	margin: auto;
-	align-items: center;
 }
 
 .theme-toggle {

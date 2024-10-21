@@ -1,0 +1,29 @@
+/** landing page */
+
+.landing-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+
+.app .landing-container {
+    margin-top: 30vh;
+}
+
+/** account form */
+
+.sub-btn {
+    align-items: center;
+    margin: auto;
+    margin-top: 10px;
+}
+
+
+/* Single player*/
+
+.single-btn {
+    margin: auto;
+}
+

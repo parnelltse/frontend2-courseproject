@@ -21,7 +21,7 @@ export default function MultiPlayer() {
 	};
 
 	return (
-		<div className="single-container">
+		<div>
 			<h1>Multi Player - Matching Game</h1>
 
 			<div className="game-options">

@@ -1,0 +1,14 @@
+/** landing page */
+
+.landing-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+
+header .landing-container {
+    margin-top: 30vh;
+}
+

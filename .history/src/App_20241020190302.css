@@ -191,7 +191,6 @@ button.back-btn:hover {
 	justify-content: center;
 	flex-direction: column;
 	margin: auto;
-	align-items: center;
 }
 
 .theme-toggle {
