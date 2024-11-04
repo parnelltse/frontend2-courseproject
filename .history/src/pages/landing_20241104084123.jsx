@@ -42,17 +42,13 @@ export function Landing () {
           <p className="gameInfo" onClick={handleGameInfo}>ⓘ</p>
         </div>
 
-        {openOverlay && (
-          <div className="overlayContainer">
-            <div className="contentBox">
-              <h3 className="overlayHeader">About the Game</h3>
-              <p className="overlayContent">
-                Welcome to MatchMaster, the ultimate matching game for solo or multiplayer fun! Create your profile to track scores, save progress, and climb the leaderboard. Play in single or multiplayer mode, challenge friends, and switch up game difficulty as you improve.
-              </p>
-              <button className="overlayButton" onClick={closeOverlay}>Close</button>
-            </div>
-          </div>
-        )}
+        <div className="overlayContainer">
+          <h3 className="overlayHeader">About the Game</h3>
+          <p className="overlayContent">
+            Welcome to MatchMaster, the ultimate matching game for solo or multiplayer fun! Create your profile to track scores, save progress, and climb the leaderboard. Play in single or multiplayer mode, challenge friends, and switch up game difficulty as you improve.
+          </p>
+          <button className="overlayButton" onClick={closeOverlay}>Close</button>
+        </div>
 
         <div className={`home-container ${isActive ? 'active' : ''}`} id="home-container">
           <div className="sign-up">

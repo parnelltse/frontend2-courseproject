@@ -14,23 +14,11 @@ export function Landing () {
 		navigate("/home");
 	};
 
-  const handleGameInfo = () => {
-    console.log("This is about the game");
-    setOpenOverlay(true)
-  }
-
-  const closeOverlay = () => {
-    setOpenOverlay(false);
-  };
 
 
   const [isActive, setIsActive] = useState(false);
 
   const toggleActive = () => setIsActive(!isActive);
-
-  const [openOverlay, setOpenOverlay] = useState(false)
-
-
   
   return (
     <div className={`app ${isActive ? 'active' : ''}`}>
@@ -39,21 +27,8 @@ export function Landing () {
           <h1 className='headline'>
             Matching Game
           </h1>
-          <p className="gameInfo" onClick={handleGameInfo}>ⓘ</p>
+          <p className="gameInfo">ⓘ</p>
         </div>
-
-        {openOverlay && (
-          <div className="overlayContainer">
-            <div className="contentBox">
-              <h3 className="overlayHeader">About the Game</h3>
-              <p className="overlayContent">
-                Welcome to MatchMaster, the ultimate matching game for solo or multiplayer fun! Create your profile to track scores, save progress, and climb the leaderboard. Play in single or multiplayer mode, challenge friends, and switch up game difficulty as you improve.
-              </p>
-              <button className="overlayButton" onClick={closeOverlay}>Close</button>
-            </div>
-          </div>
-        )}
-
         <div className={`home-container ${isActive ? 'active' : ''}`} id="home-container">
           <div className="sign-up">
             <form onSubmit={handleAccountCreation}>
