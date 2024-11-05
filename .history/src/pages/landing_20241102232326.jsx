@@ -30,6 +30,7 @@ export function Landing () {
           <div className="sign-up">
             <form onSubmit={handleAccountCreation}>
               <h1>Create Account</h1>
+              <span>or use email for registration</span>
               <input type="text" placeholder="Name" />
               <input type="text" placeholder="Email" />
               <input type="password" placeholder="Password" />
@@ -39,6 +40,7 @@ export function Landing () {
           <div className="sign-in">
             <form onSubmit={handleLogin}>
               <h1>Sign In</h1>
+              <span>or use email password</span>
               <input type="text" placeholder="Email" />
               <input type="password" placeholder="Password" />
               <a href="#">Forgot password</a>
