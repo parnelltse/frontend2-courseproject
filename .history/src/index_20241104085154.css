@@ -256,15 +256,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2000;
+  z-index: 1000;
 }
 
 .contentBox {
   width: 800px;
   height: 500px;
-  background-color: rgb(235, 220, 245);
+  background-color: beige;
   border-radius: 20px;
-  padding: 40px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -279,7 +279,6 @@
 
 .overlayContent {
   font-size: 18px;
-  padding-bottom: 40px;
 }
 
 .overButton {
