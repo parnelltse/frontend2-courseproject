@@ -31,9 +31,9 @@ const ProfileSettings = () => {
     // Add actual save logic here (e.g., API call to update profile)
   };
 
-  // Navigate to game history page
+  // Navigate to the game history page
   const handleScoresClick = () => {
-    navigate('/gamehistory'); // Use lowercase path to game history
+    navigate('/gamehistory'); // Navigate to the game history page
   };
 
   return (
@@ -77,7 +77,9 @@ const ProfileSettings = () => {
       </button>
 
       <div className="navigation-buttons">
-        <button className="scores-button" onClick={handleScoresClick}>Scores</button> {/* Link to GameHistory */}
+        <button className="scores-button" onClick={handleScoresClick}>
+          Scores
+        </button>
         <button className="scores-button">Logout</button>
       </div>
     </div>

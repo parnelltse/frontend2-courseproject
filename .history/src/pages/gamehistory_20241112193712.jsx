@@ -1,6 +1,6 @@
 import React from "react";
 import BackButton from "../components/BackButton";
-import "../App.css"; // Make sure to import your CSS file
+import "../App.css";
 
 export default function GameHistory({ scores }) {
   return (

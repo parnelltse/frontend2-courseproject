@@ -97,7 +97,6 @@
 	min-height: 100vh;
 	background-color: #f9f9f9;
 	padding: 20px;
-	position: relative; /* Add relative positioning */
   }
   
   .profile-settings-title {
@@ -145,13 +144,6 @@
   
   .scores-button:hover {
 	background-color: #018786;
-  }
-  
-  /* Back Button (aligned to left) */
-  .back-button {
-	position: absolute; /* Use absolute positioning to place it on the left */
-	left: 20px;
-	top: 20px;
   }
   
   /* Game Options */

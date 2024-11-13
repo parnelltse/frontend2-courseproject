@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Landing } from './pages/landing';
 import Home from './pages/home';
@@ -13,6 +13,7 @@ import SingleGame from './pages/singlegame';
 import MultiGame from './pages/multigame';
 
 function App() {
+  // Define the scores state here
   const [scores, setScores] = useState([
     { date: '2024-10-19', score: 85, gameMode: 'Single Player' },
     { date: '2024-10-18', score: 90, gameMode: 'Multiplayer' },
@@ -36,6 +37,14 @@ function App() {
       </Routes>
     </Router>
   );
+  // In a game component like SinglePlayer or MultiPlayer
+const addNewScore = (newScore, gameMode) => {
+  setScores((prevScores) => [
+    ...prevScores,
+    { date: new Date().toISOString().split('T')[0], score: newScore, gameMode }
+  ]);
+};
+
 }
 
 export default App;

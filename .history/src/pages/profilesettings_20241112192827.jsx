@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const ProfileSettings = () => {
   // Initial profile information state
   const [profile, setProfile] = useState({
@@ -31,18 +32,13 @@ const ProfileSettings = () => {
     // Add actual save logic here (e.g., API call to update profile)
   };
 
-  // Navigate to game history page
-  const handleScoresClick = () => {
-    navigate('/gamehistory'); // Use lowercase path to game history
-  };
-
   return (
-    <div className="profile-settings-container">
+    <div className="profile-settings">
       <button onClick={handleBackClick} className="back-arrow-button">
         <i className="fas fa-arrow-left"></i> Back
       </button>
 
-      <h1 className="profile-settings-title">Profile Settings</h1>
+      <h1>Profile Settings</h1>
       
       <div className="profile-info">
         <div className="profile-avatar">
@@ -52,7 +48,6 @@ const ProfileSettings = () => {
           <label>
             Name:
             <input
-              className="username-input"
               type="text"
               name="name"
               value={profile.name}
@@ -62,7 +57,6 @@ const ProfileSettings = () => {
           <label>
             Email:
             <input
-              className="username-input"
               type="email"
               name="email"
               value={profile.email}
@@ -75,11 +69,6 @@ const ProfileSettings = () => {
       <button className="save-button" onClick={handleSave}>
         Save Changes
       </button>
-
-      <div className="navigation-buttons">
-        <button className="scores-button" onClick={handleScoresClick}>Scores</button> {/* Link to GameHistory */}
-        <button className="scores-button">Logout</button>
-      </div>
     </div>
   );
 };
