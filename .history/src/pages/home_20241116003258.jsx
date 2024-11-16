@@ -12,7 +12,7 @@ export default function Home() {
 
 			<div className="home-board">
 				<button
-					className="play-btn"
+					className="play-button"
 					onClick={() => navigate("/gameoptions")}
 				>
 					Play

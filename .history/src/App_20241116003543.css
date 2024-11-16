@@ -57,12 +57,11 @@ button:hover {
 	border: none; /* Remove border */
 	border-radius: 5px; /* Rounded corners */
 	padding: 10px 20px; /* Button padding */
-	font-size: 24px; /* Font size */
+	font-size: 1.2rem; /* Font size */
 	cursor: pointer; /* Pointer cursor on hover */
 	transition: background-color 0.3s; /* Smooth background transition */
-	width: 200px; /* Ensure the width matches other buttons */
+	width: 155px; /* Ensure the width matches other buttons */
 	height: 50px; /* Ensure the height matches other buttons */
-	margin-top: 100px;
 }
 
 .profile-button:hover {

@@ -31,6 +31,8 @@ export default function SinglePlayer() {
 
 				<button onClick={() => handleButtonClick(4)}>4x4</button>
 				<button onClick={() => handleButtonClick(6)}>6x6</button>
+				<button onClick={() => handleButtonClick(8)}>8x8</button>
+				<button onClick={() => handleButtonClick(10)}>10x10</button>
 
 				<div>
 					<h3>Or Enter a Grid Size (4-10):</h3>
@@ -62,7 +64,7 @@ export default function SinglePlayer() {
 							alert("Please select a valid grid size.");
 						}
 					}}
-					className="play-btn"
+					className="single-btn"
 				>
 					Play
 				</button>
