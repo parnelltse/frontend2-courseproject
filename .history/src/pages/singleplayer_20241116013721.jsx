@@ -62,7 +62,7 @@ export default function SinglePlayer() {
 							alert("Please select a valid grid size.");
 						}
 					}}
-					className="play-btn"
+					className="single-btn"
 				>
 					Play
 				</button>

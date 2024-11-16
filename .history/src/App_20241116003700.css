@@ -62,7 +62,7 @@ button:hover {
 	transition: background-color 0.3s; /* Smooth background transition */
 	width: 200px; /* Ensure the width matches other buttons */
 	height: 50px; /* Ensure the height matches other buttons */
-	margin-top: 100px;
+	margin-top: 50px;
 }
 
 .profile-button:hover {

@@ -5,7 +5,7 @@ import "../App.css";
 
 export default function SingleGame() {
 	const location = useLocation();
-	const { gridSize } = location.state || { gridSize: 4 }; // Default to 5x5
+	const { gridSize } = location.state || { gridSize: 5 }; // Default to 5x5
 
 	// Total cards = gridSize * gridSize
 	const totalCards = gridSize * gridSize;

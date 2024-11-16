@@ -299,7 +299,7 @@
   flex-direction: column;
   justify-content: center;
   border-radius: 30px;
-  background: #a7cbe9;
+  background: linear-gradient(to bottom, #a7cbe9, rgba(255, 255, 255, 0), #a7cbe9);;
 }
 
 .play-btn {
@@ -313,9 +313,25 @@
   cursor: pointer; /* Pointer cursor on hover */
   overflow: hidden; /* Prevents the animation from spilling outside */
   z-index: 1; /* Prevent the border animation from overflowing */
-  height: 60px;
 }
 
-.play-btn:hover {
-  background-color: #507c62; /* Button background */
+.play-btn::after {
+  content: '';
+  position: absolute;
+  inset: -4px; /* Position slightly outside the button */
+  background: conic-gradient(90deg, transparent, greenyellow, transparent);
+  z-index: -3; /* Place the border behind the button */
+  border-radius: inherit; /* Match the button's border radius */
+  animation: animate-border 2s linear infinite; /* Infinite animation */
+  padding: 10px;
 }
+
+@keyframes border-animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
