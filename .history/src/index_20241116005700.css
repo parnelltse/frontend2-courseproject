@@ -299,34 +299,39 @@
   flex-direction: column;
   justify-content: center;
   border-radius: 30px;
-  background: #a7cbe9;
+  background: linear-gradient(to bottom, #a7cbe9, rgba(255, 255, 255, 0), #a7cbe9);;
 }
 
 .play-btn {
-  background-color: #3d8b5e; /* Button background */
+  background-color: #3d8b5e; /* Button background color */
   color: white; /* Text color */
-  font-size: 28px; /* Font size */
-  padding: 15px 25px; /* Button padding */
   border: none; /* Remove default border */
   border-radius: 5px; /* Rounded corners */
-  position: relative; /* Ensures stacking context for pseudo-element */
-  cursor: pointer; /* Pointer cursor on hover */
-  overflow: hidden; /* Prevents the animation from spilling outside */
-  z-index: 1; /* Prevent the border animation from overflowing */
-  height: 60px;
+  padding: 15px 25px;
+  font-size: 28px;
+  position: relative;
+  cursor: pointer;
+  z-index: 3; /* Ensure the button is above the animated border */
+  overflow: hidden; /* Prevent the border animation from overflowing */
 }
 
-.play-btn:hover {
-  background-color: #507c62; /* Button background */
+.play-btn::after {
+  content: '';
+  position: absolute;
+  inset: -4px; /* Position slightly outside the button */
+  background: greenyellow;
+  z-index: -3; /* Place the border behind the button */
+  border-radius: inherit; /* Match the button's border radius */
+  animation: animate-border 2s linear infinite; /* Infinite animation */
+  padding: 10px;
 }
 
-
-.game-controls {
-  padding: 0 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 20px;
+@keyframes animate-border {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 400% 0;
+  }
 }
-
 

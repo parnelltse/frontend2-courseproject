@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
 
-export default function MultiPlayer() {
+export default function SinglePlayer() {
 	const navigate = useNavigate();
 	const [gridSize, setGridSize] = useState("");
 
@@ -25,13 +24,15 @@ export default function MultiPlayer() {
 
 	return (
 		<div className="single-container">
-			<h1>Multi Player - Matching Game</h1>
+			<h1>Single Player - Matching Game</h1>
 
 			<div className="game-options">
 				<h2>Select Grid Size:</h2>
 
 				<button onClick={() => handleButtonClick(4)}>4x4</button>
 				<button onClick={() => handleButtonClick(6)}>6x6</button>
+				<button onClick={() => handleButtonClick(8)}>8x8</button>
+				<button onClick={() => handleButtonClick(10)}>10x10</button>
 
 				<div>
 					<h3>Or Enter a Grid Size (4-10):</h3>
@@ -58,12 +59,12 @@ export default function MultiPlayer() {
 				<button
 					onClick={() => {
 						if (gridSize >= 4 && gridSize <= 10 && gridSize % 2 === 0) {
-							navigate("/multigame", { state: { gridSize } });
+							navigate("/singlegame", { state: { gridSize } });
 						} else {
 							alert("Please select a valid grid size.");
 						}
 					}}
-					className="play-btn"
+					className="single-btn"
 				>
 					Play
 				</button>
@@ -72,3 +73,6 @@ export default function MultiPlayer() {
 		</div>
 	);
 }
+
+
+

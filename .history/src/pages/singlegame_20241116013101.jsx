@@ -3,16 +3,16 @@ import { useLocation } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import "../App.css";
 
-export default function MultiGame() {
+export default function SingleGame() {
 	const location = useLocation();
-	const { gridSize } = location.state || { gridSize: 4 }; // Default to 5x5
+	const { gridSize } = location.state || { gridSize: 5 }; // Default to 5x5
 
 	// Total cards = gridSize * gridSize
 	const totalCards = gridSize * gridSize;
 
 	return (
 		<div className="single-game-container">
-			<h1>Multi Player - Matching Game</h1>
+			<h1>Single Player - Matching Game</h1>
 			<h2>Grid Size: {gridSize}x{gridSize}</h2>
 
 			<div
@@ -33,3 +33,6 @@ export default function MultiGame() {
 		</div>
 	);
 }
+
+
+

@@ -1,20 +1,16 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
 
-export default function MultiPlayer() {
+export default function SinglePlayer() {
 	const navigate = useNavigate();
 	const [gridSize, setGridSize] = useState("");
 
 	const handleInputChange = (e) => {
-		const value = parseInt(e.target.value, 10);
-
-		if (!isNaN(value)) {
-			// Ensure the value is even and within the range of 4-10
-			if (value >= 4 && value <= 10 && value % 2 === 0) {
-				setGridSize(value);
-			}
+		const value = e.target.value;
+		if (!isNaN(value) && value >= 3 && value <= 9) {
+			//  input is a number between 3 and 9
+			setGridSize(value);
 		}
 	};
 
@@ -25,23 +21,24 @@ export default function MultiPlayer() {
 
 	return (
 		<div className="single-container">
-			<h1>Multi Player - Matching Game</h1>
+			<h1>Single Player - Matching Game</h1>
 
 			<div className="game-options">
 				<h2>Select Grid Size:</h2>
 
+				<button onClick={() => handleButtonClick(3)}>3x3</button>
 				<button onClick={() => handleButtonClick(4)}>4x4</button>
-				<button onClick={() => handleButtonClick(6)}>6x6</button>
+				<button onClick={() => handleButtonClick(5)}>5x5</button>
 
 				<div>
-					<h3>Or Enter a Grid Size (4-10):</h3>
+					<h3>Or Enter a Grid Size (3-9):</h3>
 					<input
 						type="number"
 						value={gridSize}
 						onChange={handleInputChange}
 						placeholder="size"
-						min="4"
-						max="10"
+						min="3"
+						max="9"
 					/>
 				</div>
 			</div>
@@ -57,8 +54,8 @@ export default function MultiPlayer() {
 			<div className="single-bottom">
 				<button
 					onClick={() => {
-						if (gridSize >= 4 && gridSize <= 10 && gridSize % 2 === 0) {
-							navigate("/multigame", { state: { gridSize } });
+						if (gridSize >= 3 && gridSize <= 9) {
+							navigate("/singlegame", { state: { gridSize } });
 						} else {
 							alert("Please select a valid grid size.");
 						}

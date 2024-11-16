@@ -292,41 +292,12 @@
 
 .home-board {
   width: 500px;
-  height: 400px;
   margin: auto;
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 30px;
-  background: #a7cbe9;
+  background-color: #d9ecfc;
 }
-
-.play-btn {
-  background-color: #3d8b5e; /* Button background */
-  color: white; /* Text color */
-  font-size: 28px; /* Font size */
-  padding: 15px 25px; /* Button padding */
-  border: none; /* Remove default border */
-  border-radius: 5px; /* Rounded corners */
-  position: relative; /* Ensures stacking context for pseudo-element */
-  cursor: pointer; /* Pointer cursor on hover */
-  overflow: hidden; /* Prevents the animation from spilling outside */
-  z-index: 1; /* Prevent the border animation from overflowing */
-  height: 60px;
-}
-
-.play-btn:hover {
-  background-color: #507c62; /* Button background */
-}
-
-
-.game-controls {
-  padding: 0 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 20px;
-}
-
 

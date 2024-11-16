@@ -299,7 +299,32 @@
   flex-direction: column;
   justify-content: center;
   border-radius: 30px;
+  position: relative; /* Needed for stacking the pseudo-element */
   background: #a7cbe9;
+  z-index: 1; /* Ensures the pseudo-element stays behind the content */
+  overflow: hidden; /* Ensures the border animation doesn't spill outside */
+}
+
+.home-board::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -200px;
+  border-radius: inherit; /* Matches the border radius of the parent */
+  background:#64afec;
+  z-index: -1; /* Ensures the border appears behind the .home-board */
+  animation: border-animate 3s linear infinite; /* Smooth, infinite animation */
+}
+
+@keyframes border-animate {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
 }
 
 .play-btn {
@@ -319,14 +344,3 @@
 .play-btn:hover {
   background-color: #507c62; /* Button background */
 }
-
-
-.game-controls {
-  padding: 0 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-

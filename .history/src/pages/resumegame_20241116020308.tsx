@@ -63,7 +63,7 @@ export default function ResumeGaame() {
 
 			<div className="game-controls">
 				<BackButton />
-				<button onClick={() => navigate("/singleplayer")} className="reset-btn">Start New Game</button>
+				<button onClick={resetGame} className="reset-btn">Start New Game</button>
 			</div>
 
 			<div
