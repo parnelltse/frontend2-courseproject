@@ -260,17 +260,17 @@
 	display: block;
 	margin: 20px auto;
   }
-
+  /* General container */
 .profile-settings-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: center; /* Center items vertically */
 	padding: 0 10px;
 	background-color: #f9f9f9;
-	height: 100vh; 
-	overflow: hidden;
-	gap: 1vh; 
+	height: 100vh; /* Occupy full viewport height */
+	overflow: hidden; /* Prevent scrollbars */
+	gap: 1vh; /* Minimal vertical gap for spacing */
 	box-sizing: border-box;
   }
   
@@ -291,11 +291,11 @@
   
   /* Title */
   .profile-settings-title {
-	font-size: 1.8rem; 
-	margin-bottom: 1vh; 
+	font-size: 1.8rem; /* Slightly smaller font */
+	margin-bottom: 1vh; /* Adjust spacing */
   }
   
-
+  /* Profile Info */
   .profile-info {
 	display: flex;
 	flex-direction: column;
@@ -312,13 +312,14 @@
 	margin-top: 1vh;
   }
   
-
+  /* Input fields */
   .username-input {
-	padding: 6px; 
-	width: 240px; 
+	padding: 6px; /* Smaller padding */
+	width: 240px; /* Adjusted width */
 	border: 1px solid #ccc;
   }
   
+
   .save-button {
 	padding: 6px 12px; 
 	background-color: #42a5f5;
@@ -326,6 +327,7 @@
 	border: none;
 	cursor: pointer;
   }
+
 
   .navigation-buttons {
 	display: flex;
@@ -351,15 +353,3 @@
 	cursor: pointer;
   }
   
-  .scores-button:hover {
-	background-color: #039be5;
-  }
-  .save-button:hover {
-	background-color: #1e88e5;
-  }
-  .back-arrow-button:hover {
-	background-color: #d84315;
-  }
-  .logout-button:hover {
-	background-color: #d32f2f;
-  }

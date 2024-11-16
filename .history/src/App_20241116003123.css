@@ -354,12 +354,41 @@
   .scores-button:hover {
 	background-color: #039be5;
   }
-  .save-button:hover {
-	background-color: #1e88e5;
+  
+  .logout-button {
+	padding: 6px 12px;
+	background-color: #ef5350;
+	color: white;
+	border: none;
+	cursor: pointer;
   }
-  .back-arrow-button:hover {
-	background-color: #d84315;
-  }
+  
   .logout-button:hover {
 	background-color: #d32f2f;
   }
+  Key Adjustments:
+  height: 100vh:
+  
+  Ensures the container fits exactly within the viewport height.
+  Reduced Gaps and Margins:
+  
+  Used gap: 1vh for consistent and minimal spacing between elements.
+  Reduced margin-bottom on the title and back button.
+  Compact Elements:
+  
+  Reduced padding and widths for inputs and buttons to save space.
+  Removed Scrollbars:
+  
+  Used overflow: hidden to ensure no scrollbar appears.
+  Dynamic Spacing:
+  
+  Used vh (viewport height) units for gaps, ensuring consistent behavior across different screen sizes.
+  This setup will fit everything neatly within the page without requiring scrolling. Let me know if you want to tweak the spacing or adjust specific elements further!
+  
+  
+  
+  
+  
+  
+  
+  You’ve hi

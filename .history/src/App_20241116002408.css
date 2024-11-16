@@ -260,28 +260,26 @@
 	display: block;
 	margin: 20px auto;
   }
-
+  /* General container */
 .profile-settings-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	padding: 0 10px;
+	padding: 30px; /* Increased padding */
 	background-color: #f9f9f9;
-	height: 100vh; 
-	overflow: hidden;
-	gap: 1vh; 
-	box-sizing: border-box;
+	min-height: 100vh; /* Ensures full screen height */
+	overflow: hidden; /* Prevents scrollbars */
+	box-sizing: border-box; /* Ensures padding is included in width/height */
   }
   
   /* Back Button */
   .back-arrow-button {
 	align-self: flex-start;
-	margin-bottom: 1vh; /* Adjust spacing to fit */
-	background-color: #ff7043;
+	margin-bottom: 30px; /* Added margin */
+	background-color: #ff7043; /* New color */
 	color: white;
 	border: none;
-	padding: 8px 15px;
+	padding: 10px 15px;
 	cursor: pointer;
   }
   
@@ -291,61 +289,60 @@
   
   /* Title */
   .profile-settings-title {
-	font-size: 1.8rem; 
-	margin-bottom: 1vh; 
+	font-size: 2rem;
+	margin-bottom: 30px; /* Added margin */
   }
   
-
+  /* Profile Info */
   .profile-info {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1vh; /* Minimal gap between elements */
+	gap: 30px; /* Added consistent spacing */
   }
   
   .profile-avatar img {
 	display: block;
-	margin: 0 auto;
+	margin: 0 auto; /* Centering */
   }
   
   .profile-avatar input {
-	margin-top: 1vh;
+	margin-top: 10px;
   }
   
-
+  /* Input fields */
   .username-input {
-	padding: 6px; 
-	width: 240px; 
+	padding: 10px;
+	width: 250px;
 	border: 1px solid #ccc;
+	margin-top: 30px; /* Added margin */
   }
   
+  /* Save Button */
   .save-button {
-	padding: 6px 12px; 
-	background-color: #42a5f5;
+	padding: 10px 20px;
+	background-color: #42a5f5; /* New color */
 	color: white;
 	border: none;
 	cursor: pointer;
+	margin-top: 30px; /* Added margin */
   }
-
+  
+  .save-button:hover {
+	background-color: #1e88e5;
+  }
+  
+  /* Navigation Buttons */
   .navigation-buttons {
 	display: flex;
 	flex-direction: column;
-	gap: 1vh; 
-	margin-top: 1vh; 
+	gap: 30px; /* Added spacing between buttons */
+	margin-top: 30px; /* Added margin */
   }
   
   .scores-button {
-	padding: 6px 12px; 
-	background-color: #29b6f6;
-	color: white;
-	border: none;
-	cursor: pointer;
-  }
-  
-
-  .logout-button {
-	padding: 6px 12px;
-	background-color: #ef5350;
+	padding: 10px 20px;
+	background-color: #29b6f6; /* New color */
 	color: white;
 	border: none;
 	cursor: pointer;
@@ -354,12 +351,16 @@
   .scores-button:hover {
 	background-color: #039be5;
   }
-  .save-button:hover {
-	background-color: #1e88e5;
+  
+  .logout-button {
+	padding: 10px 20px;
+	background-color: #ef5350; /* New color */
+	color: white;
+	border: none;
+	cursor: pointer;
   }
-  .back-arrow-button:hover {
-	background-color: #d84315;
-  }
+  
   .logout-button:hover {
 	background-color: #d32f2f;
   }
+  

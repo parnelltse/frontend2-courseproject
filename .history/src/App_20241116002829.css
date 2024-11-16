@@ -260,17 +260,17 @@
 	display: block;
 	margin: 20px auto;
   }
-
+  /* General container */
 .profile-settings-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: center; /* Center items vertically */
 	padding: 0 10px;
 	background-color: #f9f9f9;
-	height: 100vh; 
-	overflow: hidden;
-	gap: 1vh; 
+	height: 100vh; /* Occupy full viewport height */
+	overflow: hidden; /* Prevent scrollbars */
+	gap: 1vh; /* Minimal vertical gap for spacing */
 	box-sizing: border-box;
   }
   
@@ -291,11 +291,11 @@
   
   /* Title */
   .profile-settings-title {
-	font-size: 1.8rem; 
-	margin-bottom: 1vh; 
+	font-size: 1.8rem; /* Slightly smaller font */
+	margin-bottom: 1vh; /* Adjust spacing */
   }
   
-
+  /* Profile Info */
   .profile-info {
 	display: flex;
 	flex-direction: column;
@@ -312,40 +312,37 @@
 	margin-top: 1vh;
   }
   
-
+  /* Input fields */
   .username-input {
-	padding: 6px; 
-	width: 240px; 
+	padding: 6px; /* Smaller padding */
+	width: 240px; /* Adjusted width */
 	border: 1px solid #ccc;
   }
   
+  /* Save Button */
   .save-button {
-	padding: 6px 12px; 
+	padding: 6px 12px; /* Smaller padding */
 	background-color: #42a5f5;
 	color: white;
 	border: none;
 	cursor: pointer;
   }
-
+  
+  .save-button:hover {
+	background-color: #1e88e5;
+  }
+  
+  /* Navigation Buttons */
   .navigation-buttons {
 	display: flex;
 	flex-direction: column;
-	gap: 1vh; 
-	margin-top: 1vh; 
+	gap: 1vh; /* Minimal spacing between buttons */
+	margin-top: 1vh; /* Adjusted margin */
   }
   
   .scores-button {
-	padding: 6px 12px; 
+	padding: 6px 12px; /* Smaller padding */
 	background-color: #29b6f6;
-	color: white;
-	border: none;
-	cursor: pointer;
-  }
-  
-
-  .logout-button {
-	padding: 6px 12px;
-	background-color: #ef5350;
 	color: white;
 	border: none;
 	cursor: pointer;
@@ -354,12 +351,12 @@
   .scores-button:hover {
 	background-color: #039be5;
   }
-  .save-button:hover {
-	background-color: #1e88e5;
+  
+  .logout-button {
+	padding: 6px 12px;
+	background-color: #ef5350;
+	color: white;
+	border: none;
+	cursor: pointer;
   }
-  .back-arrow-button:hover {
-	background-color: #d84315;
-  }
-  .logout-button:hover {
-	background-color: #d32f2f;
-  }
+  

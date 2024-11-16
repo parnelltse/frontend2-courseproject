@@ -88,23 +88,71 @@
 	background-color: #c41c00;
   }
   
-  /* Profile Settings Page */
-  .profile-settings-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	min-height: 100vh;
-	background-color: #f9f9f9;
-	padding: 20px;
-	position: relative; /* Add relative positioning */
-  }
-  
-  .profile-settings-title {
-	font-size: 2.5rem;
-	margin-bottom: 20px;
-  }
-  
+ .profile-settings {
+  text-align: center;
+  font-family: 'Times New Roman', serif;
+}
+
+.avatar img {
+  border-radius: 50%;
+  margin: 10px 0;
+}
+
+input {
+  display: block;
+  margin: 10px auto;
+  padding: 8px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 15px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+.profile-settings {
+  text-align: center;
+  font-family: 'Times New Roman', serif;
+}
+
+.avatar img {
+  border-radius: 50%;
+  margin: 10px 0;
+}
+
+input {
+  display: block;
+  margin: 10px auto;
+  padding: 8px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 15px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
   .submitted-username {
 	font-size: 1.5rem;
 	color: #6200ea;
@@ -260,106 +308,4 @@
 	display: block;
 	margin: 20px auto;
   }
-
-.profile-settings-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 0 10px;
-	background-color: #f9f9f9;
-	height: 100vh; 
-	overflow: hidden;
-	gap: 1vh; 
-	box-sizing: border-box;
-  }
   
-  /* Back Button */
-  .back-arrow-button {
-	align-self: flex-start;
-	margin-bottom: 1vh; /* Adjust spacing to fit */
-	background-color: #ff7043;
-	color: white;
-	border: none;
-	padding: 8px 15px;
-	cursor: pointer;
-  }
-  
-  .back-arrow-button:hover {
-	background-color: #d84315;
-  }
-  
-  /* Title */
-  .profile-settings-title {
-	font-size: 1.8rem; 
-	margin-bottom: 1vh; 
-  }
-  
-
-  .profile-info {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 1vh; /* Minimal gap between elements */
-  }
-  
-  .profile-avatar img {
-	display: block;
-	margin: 0 auto;
-  }
-  
-  .profile-avatar input {
-	margin-top: 1vh;
-  }
-  
-
-  .username-input {
-	padding: 6px; 
-	width: 240px; 
-	border: 1px solid #ccc;
-  }
-  
-  .save-button {
-	padding: 6px 12px; 
-	background-color: #42a5f5;
-	color: white;
-	border: none;
-	cursor: pointer;
-  }
-
-  .navigation-buttons {
-	display: flex;
-	flex-direction: column;
-	gap: 1vh; 
-	margin-top: 1vh; 
-  }
-  
-  .scores-button {
-	padding: 6px 12px; 
-	background-color: #29b6f6;
-	color: white;
-	border: none;
-	cursor: pointer;
-  }
-  
-
-  .logout-button {
-	padding: 6px 12px;
-	background-color: #ef5350;
-	color: white;
-	border: none;
-	cursor: pointer;
-  }
-  
-  .scores-button:hover {
-	background-color: #039be5;
-  }
-  .save-button:hover {
-	background-color: #1e88e5;
-  }
-  .back-arrow-button:hover {
-	background-color: #d84315;
-  }
-  .logout-button:hover {
-	background-color: #d32f2f;
-  }

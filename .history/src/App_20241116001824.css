@@ -260,106 +260,61 @@
 	display: block;
 	margin: 20px auto;
   }
-
-.profile-settings-container {
+  .profile-settings-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	padding: 0 10px;
+	padding: 20px;
 	background-color: #f9f9f9;
-	height: 100vh; 
-	overflow: hidden;
-	gap: 1vh; 
-	box-sizing: border-box;
+	min-height: 100vh;
   }
   
-  /* Back Button */
   .back-arrow-button {
 	align-self: flex-start;
-	margin-bottom: 1vh; /* Adjust spacing to fit */
-	background-color: #ff7043;
+	margin-bottom: 20px;
+	background-color: #6200ea;
 	color: white;
 	border: none;
-	padding: 8px 15px;
+	border-radius: 4px;
+	padding: 10px 15px;
 	cursor: pointer;
   }
   
-  .back-arrow-button:hover {
-	background-color: #d84315;
-  }
-  
-  /* Title */
   .profile-settings-title {
-	font-size: 1.8rem; 
-	margin-bottom: 1vh; 
+	font-size: 2rem;
+	margin-bottom: 20px;
   }
   
-
   .profile-info {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1vh; /* Minimal gap between elements */
+	gap: 15px;
   }
   
   .profile-avatar img {
-	display: block;
-	margin: 0 auto;
+	border-radius: 50%;
   }
   
-  .profile-avatar input {
-	margin-top: 1vh;
-  }
-  
-
   .username-input {
-	padding: 6px; 
-	width: 240px; 
+	padding: 10px;
+	width: 250px;
 	border: 1px solid #ccc;
+	border-radius: 4px;
   }
   
-  .save-button {
-	padding: 6px 12px; 
-	background-color: #42a5f5;
-	color: white;
-	border: none;
-	cursor: pointer;
-  }
-
-  .navigation-buttons {
-	display: flex;
-	flex-direction: column;
-	gap: 1vh; 
-	margin-top: 1vh; 
-  }
-  
+  .save-button,
   .scores-button {
-	padding: 6px 12px; 
-	background-color: #29b6f6;
+	padding: 10px 20px;
+	background-color: #6200ea;
 	color: white;
 	border: none;
+	border-radius: 4px;
 	cursor: pointer;
   }
   
-
-  .logout-button {
-	padding: 6px 12px;
-	background-color: #ef5350;
-	color: white;
-	border: none;
-	cursor: pointer;
-  }
-  
+  .save-button:hover,
   .scores-button:hover {
-	background-color: #039be5;
+	background-color: #3700b3;
   }
-  .save-button:hover {
-	background-color: #1e88e5;
-  }
-  .back-arrow-button:hover {
-	background-color: #d84315;
-  }
-  .logout-button:hover {
-	background-color: #d32f2f;
-  }
+  
