@@ -12,7 +12,7 @@ export default function MultiGame() {
 
 	return (
 		<div className="single-game-container">
-			<h1>Multi Player - Matching Game</h1>
+			<h1>MultiPlayer - Matching Game</h1>
 			<h2>Grid Size: {gridSize}x{gridSize}</h2>
 
 			<div

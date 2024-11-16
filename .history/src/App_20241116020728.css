@@ -232,12 +232,13 @@ img {
 }
 
 .game-grid {
-	display: grid;
-	justify-content: center; /* Center the grid */
-	gap: 20px; /* Space between cards */
-	padding: 100px;
-	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Auto-adjust columns */
-  }
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+	padding: 50px;
+}
 
 .game-item {
 	background-color: #c5d9e8; /* Background color for game items */

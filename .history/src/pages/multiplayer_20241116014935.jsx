@@ -25,7 +25,7 @@ export default function MultiPlayer() {
 
 	return (
 		<div className="single-container">
-			<h1>Multi Player - Matching Game</h1>
+			<h1>Single Player - Matching Game</h1>
 
 			<div className="game-options">
 				<h2>Select Grid Size:</h2>
