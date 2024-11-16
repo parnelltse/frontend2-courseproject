@@ -3,13 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import "../App.css";
 
-// Define GameState interface at the top
-interface GameState {
-	matched: number[];
-	currentGrid: number;
-}
-
-export default function ResumeGaame() {
+export default function SingleGame() {
 	const location = useLocation();
 	const navigate = useNavigate();
 
@@ -18,12 +12,10 @@ export default function ResumeGaame() {
 	const totalCards = gridSize * gridSize;
 
 	// Game state
-	const [gameState, setGameState] = useState<GameState>(() => {
+	const [gameState, setGameState] = useState(() => {
 		// Load from localStorage if available
 		const savedState = localStorage.getItem("gameState");
-		return savedState
-			? JSON.parse(savedState)
-			: { matched: [], currentGrid: gridSize }; // Default state
+		return savedState ? JSON.parse(savedState) : { matched: [], currentGrid: gridSize };
 	});
 
 	// Save state to localStorage whenever it changes
@@ -39,12 +31,9 @@ export default function ResumeGaame() {
 
 	// Resume from saved state
 	const resumeGame = () => {
-		const savedState = localStorage.getItem("gameState");
-		if (savedState) {
-			const parsedState: GameState = JSON.parse(savedState);
-			if (parsedState.currentGrid === gridSize) {
-				setGameState(parsedState);
-			}
+		const savedState = JSON.parse(localStorage.getItem("gameState"));
+		if (savedState && savedState.currentGrid === gridSize) {
+			setGameState(savedState);
 		}
 	};
 
@@ -61,11 +50,6 @@ export default function ResumeGaame() {
 
 			<h2>Grid Size: {gridSize}x{gridSize}</h2>
 
-			<div className="game-controls">
-				<BackButton />
-				<button onClick={() => navigate("/singleplayer")} className="reset-btn">Start New Game</button>
-			</div>
-
 			<div
 				className="game-grid"
 				style={{
@@ -81,6 +65,11 @@ export default function ResumeGaame() {
 						Card {index + 1}
 					</div>
 				))}
+			</div>
+
+			<div className="game-controls">
+				<button onClick={resetGame} className="reset-btn">Start New Game</button>
+				<BackButton />
 			</div>
 		</div>
 	);

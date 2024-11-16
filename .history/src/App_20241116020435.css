@@ -233,11 +233,10 @@ img {
 
 .game-grid {
 	display: grid;
-	justify-content: center; /* Center the grid */
-	gap: 20px; /* Space between cards */
-	padding: 100px;
-	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Auto-adjust columns */
-  }
+	grid-template-columns: repeat(5, 1fr); /* 5 columns for a 5x5 grid */
+	gap: 10px; /* Space between grid items */
+	padding: 20px; /* Optional padding around the grid */
+}
 
 .game-item {
 	background-color: #c5d9e8; /* Background color for game items */
@@ -247,7 +246,7 @@ img {
 	align-items: center; /* Center content vertically */
 	justify-content: center; /* Center content horizontally */
 	height: 100px; /* Fixed height for game items */
-	width: 200px;
+	width: 300px;
 	font-size: 1.2em; /* Font size for game item text */
 }
 

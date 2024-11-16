@@ -235,7 +235,7 @@ img {
 	display: grid;
 	justify-content: center; /* Center the grid */
 	gap: 20px; /* Space between cards */
-	padding: 100px;
+	padding: 50px;
 	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Auto-adjust columns */
   }
 

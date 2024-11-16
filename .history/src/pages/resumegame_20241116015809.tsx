@@ -61,11 +61,6 @@ export default function ResumeGaame() {
 
 			<h2>Grid Size: {gridSize}x{gridSize}</h2>
 
-			<div className="game-controls">
-				<BackButton />
-				<button onClick={() => navigate("/singleplayer")} className="reset-btn">Start New Game</button>
-			</div>
-
 			<div
 				className="game-grid"
 				style={{
@@ -81,6 +76,11 @@ export default function ResumeGaame() {
 						Card {index + 1}
 					</div>
 				))}
+			</div>
+
+			<div className="game-controls">
+				<button onClick={resetGame} className="reset-btn">Start New Game</button>
+				<BackButton />
 			</div>
 		</div>
 	);
