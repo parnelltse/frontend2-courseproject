@@ -19,66 +19,12 @@
   
   header {
 	text-align: center;
-	margin-bottom: 40px; /* Space below header */
-	margin: auto;
-}
-
-button {
-	background-color: #1e88e5; /* Button background color */
-	color: white; /* White text color */
-	border: none; /* Remove border */
-	border-radius: 5px; /* Rounded corners */
-	padding: 10px; /* Padding for buttons */
-	cursor: pointer; /* Pointer cursor */
-	transition: background-color 0.3s; /* Smooth background transition */
-	width: 200px; /* Fixed width for all buttons */
-	height: 50px; /* Fixed height for all buttons */
-	font-size: 1rem; /* Font size for button text */
-	margin: 10px; /* Space between buttons */
-}
-
-button:hover {
-	background-color: #1565c0; /* Darker button color on hover */
-}
-
-.button-container {
-	display: flex; /* Use flexbox for button alignment */
-	flex-direction: column; /* Stack buttons vertically */
-	align-items: center; /* Center buttons horizontally */
-}
-
-.title {
-	font-size: 2.5rem; /* Title font size */
-	text-align: center; /* Center the title text */
-	margin-bottom: 20px; /* Space below title */
-}
-
-.profile-button {
-	background-color: #6200ea; /* Primary color */
-	color: white; /* White text */
-	border: none; /* Remove border */
-	border-radius: 5px; /* Rounded corners */
-	padding: 10px 20px; /* Button padding */
-	font-size: 24px; /* Font size */
-	cursor: pointer; /* Pointer cursor on hover */
-	transition: background-color 0.3s; /* Smooth background transition */
-	width: 200px; /* Ensure the width matches other buttons */
-	height: 50px; /* Ensure the height matches other buttons */
-	margin-top: 100px;
-}
-
-.profile-button:hover {
-	background-color: #3700b3; /* Darker shade on hover */
-}
-
-.button-container {
-	display: flex;
-	gap: 20px; /* Space between buttons */
-}
-
-.play-button,
-.settings-button {
-	background-color: #03dac6; /* Secondary color */
+	margin-bottom: 40px;
+  }
+  
+  button {
+	background-color: #1e88e5;
+	color: white;
 	border: none;
 	border-radius: 5px;
 	padding: 10px;
@@ -213,49 +159,18 @@ button:hover {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 20px;
-}
-
-button.grid-size {
-	background-color: #2196f3;
-	margin: 5px;
-}
-
-button.grid-size:hover {
-	background-color: #1976d2;
-}
-
-/* single and multiplayer pages */
-img {
-	max-width: 100%;
-	height: auto;
-	display: block;
-	margin: 0 auto;
-}
-
-.game-grid {
-	display: grid;
-	justify-content: center; /* Center the grid */
-	gap: 20px; /* Space between cards */
-	padding: 100px;
-	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Auto-adjust columns */
+	justify-content: center;
+	min-height: 100vh;
+	background-color: #f0f4f8;
+	padding: 20px;
   }
-
-.game-item {
-	background-color: #c5d9e8; /* Background color for game items */
-	border: 1px solid #100f0f; /* Border for each game item */
-	border-radius: 5px; /* Rounded corners */
-	display: flex; /* Center content */
-	align-items: center; /* Center content vertically */
-	justify-content: center; /* Center content horizontally */
-	height: 100px; /* Fixed height for game items */
-	width: 200px;
-	font-size: 1.2em; /* Font size for game item text */
-}
-
-/* history page */
-
-.history-container {
+  
+  .game-options-title {
+	font-size: 2.5rem;
+	margin-bottom: 40px;
+  }
+  
+  .game-options-buttons {
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
@@ -345,106 +260,61 @@ img {
 	display: block;
 	margin: 20px auto;
   }
-
-.profile-settings-container {
+  .profile-settings-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	padding: 0 10px;
+	padding: 20px;
 	background-color: #f9f9f9;
-	height: 100vh; 
-	overflow: hidden;
-	gap: 1vh; 
-	box-sizing: border-box;
+	min-height: 100vh;
   }
   
-  /* Back Button */
   .back-arrow-button {
 	align-self: flex-start;
-	margin-bottom: 1vh; /* Adjust spacing to fit */
-	background-color: #ff7043;
+	margin-bottom: 20px;
+	background-color: #6200ea;
 	color: white;
 	border: none;
-	padding: 8px 15px;
+	border-radius: 4px;
+	padding: 10px 15px;
 	cursor: pointer;
   }
   
-  .back-arrow-button:hover {
-	background-color: #d84315;
-  }
-  
-  /* Title */
   .profile-settings-title {
-	font-size: 1.8rem; 
-	margin-bottom: 1vh; 
+	font-size: 2rem;
+	margin-bottom: 20px;
   }
   
-
   .profile-info {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1vh; /* Minimal gap between elements */
+	gap: 15px;
   }
   
   .profile-avatar img {
-	display: block;
-	margin: 0 auto;
+	border-radius: 50%;
   }
   
-  .profile-avatar input {
-	margin-top: 1vh;
-  }
-  
-
   .username-input {
-	padding: 6px; 
-	width: 240px; 
+	padding: 10px;
+	width: 250px;
 	border: 1px solid #ccc;
+	border-radius: 4px;
   }
   
-  .save-button {
-	padding: 6px 12px; 
-	background-color: #42a5f5;
-	color: white;
-	border: none;
-	cursor: pointer;
-  }
-
-  .navigation-buttons {
-	display: flex;
-	flex-direction: column;
-	gap: 1vh; 
-	margin-top: 1vh; 
-  }
-  
+  .save-button,
   .scores-button {
-	padding: 6px 12px; 
-	background-color: #29b6f6;
+	padding: 10px 20px;
+	background-color: #6200ea;
 	color: white;
 	border: none;
+	border-radius: 4px;
 	cursor: pointer;
   }
   
-
-  .logout-button {
-	padding: 6px 12px;
-	background-color: #ef5350;
-	color: white;
-	border: none;
-	cursor: pointer;
-  }
-  
+  .save-button:hover,
   .scores-button:hover {
-	background-color: #039be5;
+	background-color: #3700b3;
   }
-  .save-button:hover {
-	background-color: #1e88e5;
-  }
-  .back-arrow-button:hover {
-	background-color: #d84315;
-  }
-  .logout-button:hover {
-	background-color: #d32f2f;
-  }
+  

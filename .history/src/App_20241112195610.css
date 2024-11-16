@@ -1,0 +1,215 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Home page */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #e3f2fd;
+  padding: 20px;
+  padding-top: 15vh;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+button {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 200px;
+  height: 50px;
+  font-size: 1rem;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-button {
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 155px;
+  height: 50px;
+  margin-bottom: 20vh;
+}
+
+.profile-button:hover {
+  background-color: #3700b3;
+}
+
+.play-button,
+.settings-button {
+  background-color: #03dac6;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 25px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-items: center;
+  text-align: center;
+}
+
+.play-button {
+  color: rgb(74, 96, 86);
+}
+
+.settings-button {
+  background-color: #ff5722;
+  color: white;
+}
+
+.play-button:hover {
+  background-color: #018786;
+  color: white;
+}
+
+.settings-button:hover {
+  background-color: #c41c00;
+}
+
+/* Profile Settings Page */
+.profile-settings-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+.profile-settings-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.submitted-username {
+  font-size: 1.5rem;
+  color: #6200ea;
+  margin-bottom: 20px;
+}
+
+.profile-settings-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.username-input,
+.save-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.save-button {
+  background-color: #6200ea;
+  color: white;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #3700b3;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+
+.scores-button {
+  padding: 10px 20px;
+  background-color: #03dac6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 48%;
+  max-width: 150px;
+}
+
+.scores-button:hover {
+  background-color: #018786;
+}
+
+/* Game Options */
+.game-options-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+  padding: 20px;
+}
+
+.game-options-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.game-options-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.game-option-button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 300px;
+}
+
+.game-option-button:hover {
+  background-color: #3700b3;
+}

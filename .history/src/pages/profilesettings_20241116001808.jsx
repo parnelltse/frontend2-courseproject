@@ -68,7 +68,7 @@ const ProfileSettings = () => {
         <button className="scores-button" onClick={() => navigate('/gamehistory')}>
           Scores
         </button>
-        <button className="logout-button">Logout</button>
+        <button className="scores-button">Logout</button>
       </div>
     </div>
   );
