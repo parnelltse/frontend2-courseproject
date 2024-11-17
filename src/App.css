@@ -237,10 +237,11 @@ img {
 	display: grid;
 	justify-content: center; /* Center the grid */
 	gap: 20px; /* Space between cards */
-	padding: 100px;
+	padding: 100px 100px 0 100px;
 	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Auto-adjust columns */
+	margin-bottom: 0;
   }
-
+  
 .game-item {
 	background-color: #c5d9e8; /* Background color for game items */
 	border: 1px solid #100f0f; /* Border for each game item */

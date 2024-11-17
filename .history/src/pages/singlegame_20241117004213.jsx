@@ -4,12 +4,12 @@ import BackButton from "../components/BackButton";
 import "../App.css";
 
 const cardImages = [
-  "/card-1.png",
-  "/card-2.png",
-  "/card-3.png",
-  "/card-4.png",
-  "/card-5.png",
-  "/card-6.png",
+  "/card1.png",
+  "/card2.png",
+  "/card3.png",
+  "/card4.png",
+  "/card5.png",
+  "/card6.png",
 ];
 
 export default function SingleGame() {
@@ -101,40 +101,36 @@ export default function SingleGame() {
 
       {gameEnded ? (
         <div>
-          <h2 className="congrat">Congratulations! You've matched all the cards!</h2>
-          <div className="game-controls">
-		  	<BackButton />
-			<button onClick={initializeGame}>Play Again</button>
-		  </div>
+          <h2>Congratulations! You've matched all the cards!</h2>
+          <button onClick={initializeGame}>Play Again</button>
         </div>
       ) : (
-		<div>
-			<div
-			className="game-grid"
-			style={{
-				gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
-				gridTemplateRows: `repeat(${gridSize}, 1fr)`,
-			}}
-			>
-			{cards.map((card) =>
-				card.matched ? null : (
-				<div
-					key={card.id}
-					className="game-item"
-					onClick={() => handleCardClick(card.id)}
-				>
-					<img
-					src={card.flipped ? card.image : "/back.png"}
-					alt="Card"
-					className="card-image"
-					/>
-				</div>
-				)
-			)}
-			</div>
-			<BackButton />
-		</div>
+        <div
+          className="game-grid"
+          style={{
+            gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
+            gridTemplateRows: `repeat(${gridSize}, 1fr)`,
+          }}
+        >
+          {cards.map((card) =>
+            card.matched ? null : (
+              <div
+                key={card.id}
+                className="game-item"
+                onClick={() => handleCardClick(card.id)}
+              >
+                <img
+                  src={card.flipped ? card.image : "/back.png"}
+                  alt="Card"
+                  className="card-image"
+                />
+              </div>
+            )
+          )}
+        </div>
       )}
+
+      <BackButton />
     </div>
   );
 }
