@@ -235,9 +235,8 @@ img {
 	display: grid;
 	justify-content: center; /* Center the grid */
 	gap: 20px; /* Space between cards */
-	padding: 100px 100px 0 100px;
+	padding: 100px 200px 0 200px;
 	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Auto-adjust columns */
-	margin-bottom: 0;
   }
   
 .game-item {

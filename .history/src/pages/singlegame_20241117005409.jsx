@@ -101,7 +101,7 @@ export default function SingleGame() {
 
       {gameEnded ? (
         <div>
-          <h2 className="congrat">Congratulations! You've matched all the cards!</h2>
+          <h2>Congratulations! You've matched all the cards!</h2>
           <div className="game-controls">
 		  	<BackButton />
 			<button onClick={initializeGame}>Play Again</button>
