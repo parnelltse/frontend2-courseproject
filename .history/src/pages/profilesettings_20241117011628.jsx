@@ -29,9 +29,7 @@ const ProfileSettings = () => {
 
   return (
     <div className="profile-settings-container">
-      <div className="profile-back">
-        <BackButton/>
-      </div>
+      <BackButton/>
 
       {/* Profile Settings Title */}
       <h1 className="profile-settings-title">Profile Settings</h1>
@@ -39,7 +37,7 @@ const ProfileSettings = () => {
       {/* Profile Info */}
       <div className="profile-info">
         <div className="profile-avatar">
-          <img src={profile.avatar} alt="Avatar" width={150} className="avatar"/>
+          <img src={profile.avatar} alt="Avatar" width={150} />
           <input type="file" accept="image/*" onChange={handleImageUpload} />
         </div>
         <input
@@ -68,7 +66,7 @@ const ProfileSettings = () => {
         <button className="scores-button" onClick={() => navigate('/gamehistory')}>
           Scores
         </button>
-        <button className="logout-button" onClick={() => navigate('/landing')}>Logout</button>
+        <button className="logout-button">Logout</button>
       </div>
     </div>
   );
