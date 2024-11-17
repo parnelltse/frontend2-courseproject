@@ -374,7 +374,7 @@ tr:hover {
 
 .scores-button {
 	padding: 10px 20px; /* Padding for button */
-	background-color: #7ca19d; /* Button background color */
+	background-color: #03dac6; /* Button background color */
 	color: white; /* Button text color */
 	border: none; /* Remove border */
 	border-radius: 4px; /* Rounded corners */
@@ -560,12 +560,6 @@ button:hover {
 	padding-bottom: 20px;
 }
 
-.logout-button {
-	background-color: rgb(255, 52, 52);
-}
 
-.logout-button:hover {
-	background-color: rgb(181, 36, 36);
-}
 
 

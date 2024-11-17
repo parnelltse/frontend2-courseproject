@@ -374,7 +374,7 @@ tr:hover {
 
 .scores-button {
 	padding: 10px 20px; /* Padding for button */
-	background-color: #7ca19d; /* Button background color */
+	background-color: #03dac6; /* Button background color */
 	color: white; /* Button text color */
 	border: none; /* Remove border */
 	border-radius: 4px; /* Rounded corners */
@@ -529,43 +529,3 @@ button:hover {
 	border-radius: 5px; /* Rounded corners for inputs */
 	width: 100%; /* Full width for inputs */
 }
-
-.profile-back {
-	align-items: flex-start;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	padding-left: 20px;
-	position: absolute;
-	left: 20px;
-	z-index: 5;
-}
-
-.profile-info {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 50px;
-}
-
-.profile-avatar{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-.avatar {
-	padding-bottom: 20px;
-}
-
-.logout-button {
-	background-color: rgb(255, 52, 52);
-}
-
-.logout-button:hover {
-	background-color: rgb(181, 36, 36);
-}
-
-
