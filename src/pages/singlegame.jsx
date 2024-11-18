@@ -21,6 +21,7 @@ export default function SingleGame() {
   const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
   const [gameEnded, setGameEnded] = useState(false);
+  const [score, setScore] = useState(0); 
 
   useEffect(() => {
     initializeGame();
@@ -41,6 +42,7 @@ export default function SingleGame() {
     );
     setFlippedCards([]);
     setGameEnded(false);
+    setScore(0); // Reset score on new game
   };
 
   const shuffleCards = (cards) => {
@@ -71,6 +73,7 @@ export default function SingleGame() {
             )
           );
           setFlippedCards([]);
+          setScore((prevScore) => prevScore + 100); // Increase score for correct match
         }, 500); // Delay to show match
       } else {
         // No match
@@ -83,6 +86,7 @@ export default function SingleGame() {
             )
           );
           setFlippedCards([]);
+          setScore((prevScore) => prevScore - 15); // Decrease score for incorrect match
         }, 1000); // Delay to flip back
       }
     }
@@ -98,47 +102,48 @@ export default function SingleGame() {
     <div className="single-game-container">
       <h1>Single Player - Matching Game</h1>
       <h2>Grid Size: {gridSize}x{gridSize}</h2>
+      
+      {/* Display score */}
+      <div className="score-display">
+        <h3>Score: {score}</h3>
+      </div>
 
       {gameEnded ? (
         <div>
           <h2 className="congrat">Congratulations! You've matched all the cards!</h2>
           <div className="game-controls">
-		  	<BackButton />
-			<button onClick={initializeGame}>Play Again</button>
-		  </div>
+            <BackButton />
+            <button onClick={initializeGame}>Play Again</button>
+          </div>
         </div>
       ) : (
-		<div>
-			<div
-			className="game-grid"
-			style={{
-				gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
-				gridTemplateRows: `repeat(${gridSize}, 1fr)`,
-			}}
-			>
-			{cards.map((card) =>
-				card.matched ? null : (
-				<div
-					key={card.id}
-					className="game-item"
-					onClick={() => handleCardClick(card.id)}
-				>
-					<img
-					src={card.flipped ? card.image : "/back.png"}
-					alt="Card"
-					className="card-image"
-					/>
-				</div>
-				)
-			)}
-			</div>
-			<BackButton />
-		</div>
+        <div>
+          <div
+            className="game-grid"
+            style={{
+              gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
+              gridTemplateRows: `repeat(${gridSize}, 1fr)`,
+            }}
+          >
+            {cards.map((card) =>
+              card.matched ? null : (
+                <div
+                  key={card.id}
+                  className="game-item"
+                  onClick={() => handleCardClick(card.id)}
+                >
+                  <img
+                    src={card.flipped ? card.image : "/back.png"}
+                    alt="Card"
+                    className="card-image"
+                  />
+                </div>
+              )
+            )}
+          </div>
+          <BackButton />
+        </div>
       )}
     </div>
   );
 }
-
-
-
-
