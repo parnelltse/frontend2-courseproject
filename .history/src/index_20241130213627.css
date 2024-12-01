@@ -336,11 +336,11 @@ gap: 20px;
 
 .gameInfoBox {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 
