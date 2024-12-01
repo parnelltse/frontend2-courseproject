@@ -331,16 +331,15 @@ gap: 20px;
 
 .score-display {
   align-items: center;
-  margin: auto 0;
 }
 
 .gameInfoBox {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap 20px
 }
 
 

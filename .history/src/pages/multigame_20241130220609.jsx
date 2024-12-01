@@ -15,20 +15,21 @@ const cardImages = [
 export default function MultiGame() {
   const location = useLocation();
   const { gridSize } = location.state || { gridSize: 4 }; // Default to 4x4
-
+  
   const totalCards = gridSize * gridSize;
   const totalPairs = totalCards / 2; // Total pairs to match
-
+  
   const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
   const [gameEnded, setGameEnded] = useState(false);
   const [currentPlayer, setCurrentPlayer] = useState(1); // Player 1 starts
   const [player1Score, setPlayer1Score] = useState(0); // Player 1's score
   const [player2Score, setPlayer2Score] = useState(0); // Player 2's score
-  const [matchedPairs, setMatchedPairs] = useState(0);
-  const [player1Time, setPlayer1Time] = useState(null); // Time for Player 1
-  const [player2Time, setPlayer2Time] = useState(null); // Time for Player 2
-  const [startTime, setStartTime] = useState(Date.now()); // Start time for the game
+  const [player1StartTime, setPlayer1StartTime] = useState(null); // Track Player 1 start time
+  const [player2StartTime, setPlayer2StartTime] = useState(null); // Track Player 2 start time
+  const [player1Time, setPlayer1Time] = useState(0); // Player 1's time taken
+  const [player2Time, setPlayer2Time] = useState(0); // Player 2's time taken
+  const [matchedPairs, setMatchedPairs] = useState(0); // Matched pairs counter
 
   useEffect(() => {
     initializeGame();
@@ -49,7 +50,6 @@ export default function MultiGame() {
     setFlippedCards([]);
     setGameEnded(false);
     setMatchedPairs(0);
-    setStartTime(Date.now()); // Reset start time
   };
 
   const shuffleCards = (cards) => {
@@ -58,7 +58,7 @@ export default function MultiGame() {
 
   const handleCardClick = (cardId) => {
     // Prevent clicking if the card is already flipped or matched or if it's the other player's turn
-    if (flippedCards.length === 2 || cards.find((card) => card.id === cardId).matched) return;
+    if (flippedCards.length === 2 || cards.find((card) => card.id === cardId).matched || (currentPlayer === 1 && player1StartTime === null) || (currentPlayer === 2 && player2StartTime === null)) return;
 
     const updatedCards = cards.map((card) =>
       card.id === cardId ? { ...card, flipped: true } : card
@@ -73,44 +73,32 @@ export default function MultiGame() {
       if (firstCard.image === secondCard.image) {
         // Match found
         setTimeout(() => {
-          setCards((prev) =>
-            prev.map((card) =>
-              card.id === firstCard.id || card.id === secondCard.id
-                ? { ...card, matched: true }
-                : card
-            )
+          const updatedCards = cards.map((card) =>
+            card.id === firstCard.id || card.id === secondCard.id
+              ? { ...card, matched: true }
+              : card
           );
-          setMatchedPairs((prev) => prev + 1); // Increment matched pairs
+          setCards(updatedCards);
+          setMatchedPairs((prev) => prev + 1);
 
-          // Calculate score based on matched pairs, capped at 100
-          const newScore = Math.min(
-            ((matchedPairs + 1) / totalPairs) * 100,
-            100
-          );
+          // Update score for the current player based on time
           if (currentPlayer === 1) {
-            setPlayer1Score(newScore); // Update player 1 score
+            setPlayer1Score((prevScore) => prevScore + 100);
           } else {
-            setPlayer2Score(newScore); // Update player 2 score
+            setPlayer2Score((prevScore) => prevScore + 100);
           }
           setFlippedCards([]); // Clear flipped cards
         }, 500); // Delay to show match
       } else {
         // No match
         setTimeout(() => {
-          setCards((prev) =>
-            prev.map((card) =>
-              card.id === firstCard.id || card.id === secondCard.id
-                ? { ...card, flipped: false }
-                : card
-            )
+          const updatedCards = cards.map((card) =>
+            card.id === firstCard.id || card.id === secondCard.id
+              ? { ...card, flipped: false }
+              : card
           );
-          setFlippedCards([]);
-          // Penalize score on mismatch
-          if (currentPlayer === 1) {
-            setPlayer1Score((prevScore) => Math.max(prevScore - 15, 0)); // Prevent negative score for player 1
-          } else {
-            setPlayer2Score((prevScore) => Math.max(prevScore - 15, 0)); // Prevent negative score for player 2
-          }
+          setCards(updatedCards);
+          setFlippedCards([]); // Clear flipped cards
         }, 1000); // Delay to flip back
       }
     }
@@ -119,56 +107,68 @@ export default function MultiGame() {
   useEffect(() => {
     if (cards.length > 0 && cards.every((card) => card.matched)) {
       setGameEnded(true);
-      // Capture the time taken by the current player
-      if (currentPlayer === 1 && player1Time === null) {
-        setPlayer1Time(Math.floor((Date.now() - startTime) / 1000)); // Time in seconds
-      } else if (currentPlayer === 2 && player2Time === null) {
-        setPlayer2Time(Math.floor((Date.now() - startTime) / 1000)); // Time in seconds
-      }
     }
   }, [cards]);
+
+  useEffect(() => {
+    if (gameEnded) {
+      // Calculate time for each player after game ends
+      if (currentPlayer === 1 && player1StartTime) {
+        setPlayer1Time(Math.floor((Date.now() - player1StartTime) / 1000)); // Calculate time taken by Player 1
+      }
+      if (currentPlayer === 2 && player2StartTime) {
+        setPlayer2Time(Math.floor((Date.now() - player2StartTime) / 1000)); // Calculate time taken by Player 2
+      }
+    }
+  }, [gameEnded]);
+
+  const startTimerForPlayer1 = () => {
+    setPlayer1StartTime(Date.now()); // Start timer for Player 1 when they begin the game
+  };
+
+  const startTimerForPlayer2 = () => {
+    setPlayer2StartTime(Date.now()); // Start timer for Player 2 when they begin the game
+  };
 
   const switchPlayer = () => {
     if (currentPlayer === 1) {
       setCurrentPlayer(2);
+      startTimerForPlayer2(); // Start timer for Player 2 when they begin
     } else {
       setCurrentPlayer(1);
+      startTimerForPlayer1(); // Start timer for Player 1 when they begin
     }
     initializeGame(); // Restart the game for the next player
   };
 
-  const winner = () => {
-    if (player1Time && player2Time) {
-      if (player1Time < player2Time) return "Player 1 wins!";
-      else if (player2Time < player1Time) return "Player 2 wins!";
-      else return "Draw";
-    }
-    return "";
-  };
+  const winner = player1Time < player2Time ? "Player 1" : player2Time < player1Time ? "Player 2" : "Draw";
 
   return (
     <div className="single-game-container">
       <h1>Multi Player - Matching Game</h1>
+      <h2>Grid Size: {gridSize}x{gridSize}</h2>
 
-      <div className="gameInfoBox">
-        <h2>Grid Size: {gridSize}x{gridSize}</h2>
+      {/* Show current player */}
+      <h3>{`Player ${currentPlayer}'s Turn`}</h3>
 
-        {/* Show current player */}
-        <h3>{`Player ${currentPlayer}'s Turn`}</h3>
-
-        <div className="score-display">
-          <h3>Player 1 Score: {player1Score.toFixed(0)}</h3> {/* Display score rounded to 0 decimal places */}
-          <h3>Player 2 Score: {player2Score.toFixed(0)}</h3> {/* Display score rounded to 0 decimal places */}
-        </div>
+      <div className="score-display">
+        <h3>Player 1 Score: {player1Score}</h3>
+        <h3>Player 2 Score: {player2Score}</h3>
       </div>
 
       {gameEnded ? (
         <div>
           <h2 className="congrat">
-            {winner()}
+            {winner} wins! 
+            {winner !== "Draw" && (
+              <span>
+                {winner === "Player 1" ? player1Score : player2Score} points!
+              </span>
+            )}
           </h2>
           <div className="game-controls">
             <BackButton />
+            <button onClick={initializeGame}>Play Again</button>
             <button onClick={switchPlayer}>Switch Player</button>
           </div>
         </div>
@@ -203,6 +203,5 @@ export default function MultiGame() {
     </div>
   );
 }
-
 
 
