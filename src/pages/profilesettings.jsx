@@ -4,12 +4,18 @@ import BackButton from "../components/BackButton";
 
 const ProfileSettings = () => {
   const [profile, setProfile] = useState({
-    name: 'LeBron James',
-    email: 'gavinpahal2003@gmail.com',
+    name: 'Name',
+    email: 'Email',
     avatar: 'https://via.placeholder.com/150',
   });
 
   const navigate = useNavigate();
+
+  // Sample game history, this should be fetched from your game state or a context
+  const gameHistory = [
+    { date: '2024-12-01', score: 50, gameMode: '4x4' },
+    { date: '2024-12-02', score: 60, gameMode: '4x4' },
+  ];
 
   // Handle text input changes
   const handleChange = (e) => {
@@ -30,7 +36,7 @@ const ProfileSettings = () => {
   return (
     <div className="profile-settings-container">
       <div className="profile-back">
-        <BackButton/>
+        <BackButton />
       </div>
 
       {/* Profile Settings Title */}
@@ -39,7 +45,7 @@ const ProfileSettings = () => {
       {/* Profile Info */}
       <div className="profile-info">
         <div className="profile-avatar">
-          <img src={profile.avatar} alt="Avatar" width={150} className="avatar"/>
+          <img src={profile.avatar} alt="Avatar" width={150} className="avatar" />
           <input type="file" accept="image/*" onChange={handleImageUpload} />
         </div>
         <input
@@ -65,10 +71,15 @@ const ProfileSettings = () => {
 
       {/* Navigation Buttons */}
       <div className="navigation-buttons">
-        <button className="scores-button" onClick={() => navigate('/gamehistory')}>
+        <button
+          className="scores-button"
+          onClick={() => navigate('/gamehistory', { state: { scores: gameHistory } })}
+        >
           Scores
         </button>
-        <button className="logout-button" onClick={() => navigate('/')}>Logout</button>
+        <button className="logout-button" onClick={() => navigate('/')}>
+          Logout
+        </button>
       </div>
     </div>
   );
