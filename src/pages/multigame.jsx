@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import BackButton from "../components/BackButton";
+import GameHistory from "./gamehistory"; // Import the GameHistory component
 import "../App.css";
 
 const cardImages = [
@@ -14,51 +15,61 @@ const cardImages = [
 
 export default function MultiGame() {
   const location = useLocation();
-  const { gridSize } = location.state || { gridSize: 4 }; // Default to 4x4
+  const { gridSize } = location.state || { gridSize: 4 }; // Default grid size 4x4
 
   const totalCards = gridSize * gridSize;
-  const totalPairs = totalCards / 2; // Total pairs to match
+  const totalPairs = totalCards / 2;
 
   const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
   const [gameEnded, setGameEnded] = useState(false);
-  const [currentPlayer, setCurrentPlayer] = useState(1); // Player 1 starts
-  const [player1Score, setPlayer1Score] = useState(0); // Player 1's score
-  const [player2Score, setPlayer2Score] = useState(0); // Player 2's score
+  const [currentPlayer, setCurrentPlayer] = useState(1); // Start with Player 1
+  const [player1Score, setPlayer1Score] = useState(0);
+  const [player2Score, setPlayer2Score] = useState(0);
   const [matchedPairs, setMatchedPairs] = useState(0);
-  const [player1Time, setPlayer1Time] = useState(null); // Time for Player 1
-  const [player2Time, setPlayer2Time] = useState(null); // Time for Player 2
-  const [startTime, setStartTime] = useState(Date.now()); // Start time for the game
+  const [player1Time, setPlayer1Time] = useState(null);
+  const [player2Time, setPlayer2Time] = useState(null);
+  const [startTime, setStartTime] = useState(Date.now());
+  const [cardsRevealed, setCardsRevealed] = useState(true); // Cards are revealed at the beginning
+  const [gameHistory, setGameHistory] = useState([]); // New state for storing game history
 
   useEffect(() => {
     initializeGame();
   }, [gridSize]);
 
   const initializeGame = () => {
-    const selectedImages = cardImages.slice(0, totalPairs); // Get unique pairs
+    const selectedImages = cardImages.slice(0, totalPairs);
     const shuffledCards = shuffleCards([...selectedImages, ...selectedImages]);
 
-    setCards(
-      shuffledCards.map((image, index) => ({
-        id: index,
-        image,
-        flipped: false,
-        matched: false,
-      }))
-    );
+    const initialCards = shuffledCards.map((image, index) => ({
+      id: index,
+      image,
+      flipped: false,
+      matched: false,
+    }));
+
+    setCards(initialCards);
     setFlippedCards([]);
     setGameEnded(false);
     setMatchedPairs(0);
-    setStartTime(Date.now()); // Reset start time
+    setStartTime(Date.now());
+    setCardsRevealed(true); // Set the cards to be revealed at the start
+
+    // After 5 seconds, hide the cards
+    setTimeout(() => {
+      setCardsRevealed(false); // Hide cards after 5 seconds
+    }, 5000); // Cards stay revealed for 5 seconds
   };
 
-  const shuffleCards = (cards) => {
-    return cards.sort(() => Math.random() - 0.5);
-  };
+  const shuffleCards = (cards) => cards.sort(() => Math.random() - 0.5);
 
   const handleCardClick = (cardId) => {
-    // Prevent clicking if the card is already flipped or matched or if it's the other player's turn
-    if (flippedCards.length === 2 || cards.find((card) => card.id === cardId).matched) return;
+    if (
+      cardsRevealed || // Prevent clicks during the initial reveal
+      flippedCards.length === 2 ||
+      cards.find((card) => card.id === cardId).matched
+    )
+      return;
 
     const updatedCards = cards.map((card) =>
       card.id === cardId ? { ...card, flipped: true } : card
@@ -76,24 +87,18 @@ export default function MultiGame() {
           setCards((prev) =>
             prev.map((card) =>
               card.id === firstCard.id || card.id === secondCard.id
-                ? { ...card, matched: true }
+                ? { ...card, matched: true, flipped: true } // Keep matched cards flipped
                 : card
             )
           );
-          setMatchedPairs((prev) => prev + 1); // Increment matched pairs
+          setMatchedPairs((prev) => prev + 1);
 
-          // Calculate score based on matched pairs, capped at 100
-          const newScore = Math.min(
-            ((matchedPairs + 1) / totalPairs) * 100,
-            100
-          );
-          if (currentPlayer === 1) {
-            setPlayer1Score(newScore); // Update player 1 score
-          } else {
-            setPlayer2Score(newScore); // Update player 2 score
-          }
-          setFlippedCards([]); // Clear flipped cards
-        }, 500); // Delay to show match
+          // Increment score by 25 for the current player
+          currentPlayer === 1
+            ? setPlayer1Score((prev) => prev + 25)
+            : setPlayer2Score((prev) => prev + 25);
+          setFlippedCards([]);
+        }, 500);
       } else {
         // No match
         setTimeout(() => {
@@ -106,12 +111,10 @@ export default function MultiGame() {
           );
           setFlippedCards([]);
           // Penalize score on mismatch
-          if (currentPlayer === 1) {
-            setPlayer1Score((prevScore) => Math.max(prevScore - 15, 0)); // Prevent negative score for player 1
-          } else {
-            setPlayer2Score((prevScore) => Math.max(prevScore - 15, 0)); // Prevent negative score for player 2
-          }
-        }, 1000); // Delay to flip back
+          currentPlayer === 1
+            ? setPlayer1Score((prev) => Math.max(prev - 15, 0))
+            : setPlayer2Score((prev) => Math.max(prev - 15, 0));
+        }, 1000);
       }
     }
   };
@@ -119,31 +122,40 @@ export default function MultiGame() {
   useEffect(() => {
     if (cards.length > 0 && cards.every((card) => card.matched)) {
       setGameEnded(true);
-      // Capture the time taken by the current player
-      if (currentPlayer === 1 && player1Time === null) {
-        setPlayer1Time(Math.floor((Date.now() - startTime) / 1000)); // Time in seconds
-      } else if (currentPlayer === 2 && player2Time === null) {
-        setPlayer2Time(Math.floor((Date.now() - startTime) / 1000)); // Time in seconds
-      }
+      const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+      if (currentPlayer === 1 && player1Time === null) setPlayer1Time(elapsedTime);
+      if (currentPlayer === 2 && player2Time === null) setPlayer2Time(elapsedTime);
+
+      // Save the game history once the game ends
+      const gameResult = {
+        date: new Date().toLocaleString(),
+        score: currentPlayer === 1 ? player1Score : player2Score,
+        gameMode: `${gridSize}x${gridSize}`,
+      };
+
+      setGameHistory((prevHistory) => [...prevHistory, gameResult]);
     }
   }, [cards]);
 
   const switchPlayer = () => {
-    if (currentPlayer === 1) {
-      setCurrentPlayer(2);
-    } else {
-      setCurrentPlayer(1);
-    }
-    initializeGame(); // Restart the game for the next player
+    setCurrentPlayer(currentPlayer === 1 ? 2 : 1);
+    initializeGame();
   };
 
   const winner = () => {
-    if (player1Time && player2Time) {
-      if (player1Time < player2Time) return "Player 1 wins!";
-      else if (player2Time < player1Time) return "Player 2 wins!";
-      else return "Draw";
-    }
-    return "";
+    if (!gameEnded) return "";
+    if (player1Score > player2Score) return "Player 1 wins!";
+    if (player2Score > player1Score) return "Player 2 wins!";
+    return "It's a Draw!";
+  };
+
+  const handlePlayAgain = () => {
+    setPlayer1Score(0);
+    setPlayer2Score(0);
+    setMatchedPairs(0);
+    setGameEnded(false);
+    setCurrentPlayer(1);
+    initializeGame();
   };
 
   return (
@@ -152,24 +164,21 @@ export default function MultiGame() {
 
       <div className="gameInfoBox">
         <h2>Grid Size: {gridSize}x{gridSize}</h2>
-
-        {/* Show current player */}
         <h3>{`Player ${currentPlayer}'s Turn`}</h3>
 
         <div className="score-display">
-          <h3>Player 1 Score: {player1Score.toFixed(0)}</h3> {/* Display score rounded to 0 decimal places */}
-          <h3>Player 2 Score: {player2Score.toFixed(0)}</h3> {/* Display score rounded to 0 decimal places */}
+          <h3>Player 1 Score: {player1Score.toFixed(0)}</h3>
+          <h3>Player 2 Score: {player2Score.toFixed(0)}</h3>
         </div>
       </div>
 
       {gameEnded ? (
         <div>
-          <h2 className="congrat">
-            {winner()}
-          </h2>
+          <h2 className="congrat">{winner()}</h2>
           <div className="game-controls">
             <BackButton />
             <button onClick={switchPlayer}>Switch Player</button>
+            <button onClick={handlePlayAgain}>Play Again</button> {/* Play Again button */}
           </div>
         </div>
       ) : (
@@ -182,27 +191,26 @@ export default function MultiGame() {
             }}
           >
             {cards.map((card) =>
-              card.matched ? null : (
-                <div
-                  key={card.id}
-                  className="game-item"
-                  onClick={() => handleCardClick(card.id)}
-                >
-                  <img
-                    src={card.flipped ? card.image : "/back.png"}
-                    alt="Card"
-                    className="card-image"
-                  />
-                </div>
-              )
+              // Render matched cards as well but not clickable
+              <div
+                key={card.id}
+                className={`game-item ${card.matched ? 'matched' : ''}`}
+                onClick={() => handleCardClick(card.id)}
+              >
+                <img
+                  src={card.flipped || cardsRevealed || card.matched ? card.image : "/back.png"}
+                  alt="Card"
+                  className="card-image"
+                />
+              </div>
             )}
           </div>
           <BackButton />
         </div>
       )}
+
+      {/* Pass game history to the GameHistory component */}
+      <GameHistory scores={gameHistory} />
     </div>
   );
 }
-
-
-

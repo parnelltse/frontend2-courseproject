@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import BackButton from "../components/BackButton";
+import GameHistory from "./gamehistory"; // Import the GameHistory component
 import "../App.css";
 
 const cardImages = [
@@ -24,6 +25,9 @@ export default function SingleGame() {
   const [gameEnded, setGameEnded] = useState(false);
   const [score, setScore] = useState(0); // Score out of 100
   const [matchedPairs, setMatchedPairs] = useState(0); // Keep track of matched pairs
+  const [gameStarted, setGameStarted] = useState(false); // To track if game has started
+  const [gameHistory, setGameHistory] = useState([]); // New state for storing game history
+  const [startTime, setStartTime] = useState(Date.now()); // Start time to track game duration
 
   useEffect(() => {
     initializeGame();
@@ -45,6 +49,21 @@ export default function SingleGame() {
     setGameEnded(false);
     setScore(0); // Reset score on new game
     setMatchedPairs(0); // Reset matched pairs
+    setGameStarted(false); // Reset the game start flag
+    setStartTime(Date.now()); // Reset the start time
+
+    // Reveal all cards for 5 seconds
+    setTimeout(() => {
+      setCards((prevCards) =>
+        prevCards.map((card) => ({ ...card, flipped: true }))
+      );
+      setTimeout(() => {
+        setCards((prevCards) =>
+          prevCards.map((card) => ({ ...card, flipped: false }))
+        );
+        setGameStarted(true); // Game officially starts after cards are hidden again
+      }, 5000); // Wait 5 seconds before hiding cards again
+    }, 1000); // Brief delay before starting the reveal
   };
 
   const shuffleCards = (cards) => {
@@ -52,7 +71,7 @@ export default function SingleGame() {
   };
 
   const handleCardClick = (cardId) => {
-    if (flippedCards.length === 2 || cards.find((card) => card.id === cardId).matched) return;
+    if (flippedCards.length === 2 || cards.find((card) => card.id === cardId).matched || !gameStarted) return;
 
     const updatedCards = cards.map((card) =>
       card.id === cardId ? { ...card, flipped: true } : card
@@ -77,7 +96,7 @@ export default function SingleGame() {
           setFlippedCards([]);
           setMatchedPairs((prev) => prev + 1); // Increment matched pairs
           const newScore = Math.min(
-            ((matchedPairs + 1) / totalPairs) * 100, // Calculate score as percentage
+            score + 25, // Add 25 points for each match
             100
           );
           setScore(newScore); // Update score based on matched pairs
@@ -103,22 +122,33 @@ export default function SingleGame() {
   useEffect(() => {
     if (cards.length > 0 && cards.every((card) => card.matched)) {
       setGameEnded(true);
+      const elapsedTime = Math.floor((Date.now() - startTime) / 1000); // Calculate time taken to finish game
+
+      // Save the game history once the game ends
+      const gameResult = {
+        date: new Date().toLocaleString(),
+        score,
+        gameMode: `${gridSize}x${gridSize}`,
+        timeTaken: elapsedTime,
+      };
+
+      setGameHistory((prevHistory) => [...prevHistory, gameResult]);
     }
   }, [cards]);
 
   return (
     <div className="single-game-container">
       <h1>Single Player - Matching Game</h1>
+
       <div className="gameInfoBox">
         <h2>Grid Size: {gridSize}x{gridSize}</h2>
-        <div className="score-display">
-          <h3>Score: {score.toFixed(0)}</h3> {/* Display score rounded to 0 decimal places */}
-        </div>
+        <h3>Score: {score}</h3>
+        <h3>{gameStarted ? "Game Started" : "Game is About to Start"}</h3>
       </div>
 
       {gameEnded ? (
         <div>
-          <h2 className="congrat">Congratulations! You've matched all the cards!</h2>
+          <h2 className="congrat">You Win!</h2>
           <div className="game-controls">
             <BackButton />
             <button onClick={initializeGame}>Play Again</button>
@@ -133,29 +163,26 @@ export default function SingleGame() {
               gridTemplateRows: `repeat(${gridSize}, 1fr)`,
             }}
           >
-            {cards.map((card) =>
-              card.matched ? null : (
-                <div
-                  key={card.id}
-                  className="game-item"
-                  onClick={() => handleCardClick(card.id)}
-                >
-                  <img
-                    src={card.flipped ? card.image : "/back.png"}
-                    alt="Card"
-                    className="card-image"
-                  />
-                </div>
-              )
-            )}
+            {cards.map((card) => (
+              <div
+                key={card.id}
+                className={`game-item ${card.matched ? 'matched' : ''}`}
+                onClick={() => handleCardClick(card.id)}
+              >
+                <img
+                  src={card.flipped || card.matched ? card.image : "/back.png"}
+                  alt="Card"
+                  className="card-image"
+                />
+              </div>
+            ))}
           </div>
           <BackButton />
         </div>
       )}
+
+      {/* Pass game history to the GameHistory component */}
+      <GameHistory scores={gameHistory} />
     </div>
   );
 }
-
-
-
-
