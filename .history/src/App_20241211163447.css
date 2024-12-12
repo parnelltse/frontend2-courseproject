@@ -231,11 +231,12 @@ img {
 }
 
 .game-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     justify-content: center; /* Center the grid */
     gap: 20px; /* Space between cards */
     padding: 100px 100px 0 100px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Auto-adjust columns */
+    margin-bottom: 0;
 }
 
 .game-item {
@@ -593,6 +594,7 @@ button:hover {
 
     .game-grid {
         padding: 50px 20px 0 20px;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     }
 
     .game-item {
@@ -638,6 +640,7 @@ button:hover {
 
     .game-grid {
         padding: 20px 10px 0 10px;
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
     }
 
     .game-item {
