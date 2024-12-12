@@ -2,70 +2,108 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import "../App.css";
-
-// Define GameState interface at the top
+const cardImages = [
+	"/card-1.png",
+	"/card-2.png",
+	"/card-3.png",
+	"/card-4.png",
+	"/card-5.png",
+	"/card-6.png",
+];
+interface Card {
+	id: number;
+	image: string;
+	flipped: boolean;
+	matched: boolean;
+}
 interface GameState {
-	matched: number[];
+	cards: Card[];
+	score: number;
+	matchedPairs: number;
 	currentGrid: number;
 }
-
 export default function ResumeGaame() {
 	const location = useLocation();
 	const navigate = useNavigate();
-
-	// Load grid size from location or default to 4
 	const { gridSize } = location.state || { gridSize: 4 };
 	const totalCards = gridSize * gridSize;
-
-	// Game state
+	const totalPairs = totalCards / 2;
 	const [gameState, setGameState] = useState<GameState>(() => {
-		// Load from localStorage if available
-		const savedState = localStorage.getItem("gameState");
+		const savedState = localStorage.getItem("singlePlayerGameState");
 		return savedState
 			? JSON.parse(savedState)
-			: { matched: [], currentGrid: gridSize }; // Default state
+			: {
+					cards: [],
+					score: 0,
+					matchedPairs: 0,
+					currentGrid: gridSize,
+			  };
 	});
-
-	// Save state to localStorage whenever it changes
+	const [cardsRevealed, setCardsRevealed] = useState(false);
 	useEffect(() => {
-		localStorage.setItem("gameState", JSON.stringify(gameState));
-	}, [gameState]);
-
-	// Reset game
-	const resetGame = () => {
-		setGameState({ matched: [], currentGrid: gridSize });
-		localStorage.removeItem("gameState");
+		if (gameState.cards.length === 0) {
+			initializeGame();
+		}
+	}, [gridSize]);
+	const initializeGame = () => {
+		const selectedImages = cardImages.slice(0, totalPairs);
+		const shuffledCards = [...selectedImages, ...selectedImages]
+			.sort(() => Math.random() - 0.5)
+			.map((image, index) => ({
+				id: index,
+				image,
+				flipped: false,
+				matched: false,
+			}));
+		setGameState((prev) => ({
+			...prev,
+			cards: shuffledCards,
+			score: 0,
+			matchedPairs: 0,
+			currentGrid: gridSize,
+		}));
 	};
-
-	// Resume from saved state
+	useEffect(() => {
+		localStorage.setItem("singlePlayerGameState", JSON.stringify(gameState));
+	}, [gameState]);
+	const resetGame = () => {
+		localStorage.removeItem("singlePlayerGameState");
+		initializeGame();
+	};
 	const resumeGame = () => {
-		const savedState = localStorage.getItem("gameState");
+		const savedState = localStorage.getItem("singlePlayerGameState");
 		if (savedState) {
 			const parsedState: GameState = JSON.parse(savedState);
 			if (parsedState.currentGrid === gridSize) {
 				setGameState(parsedState);
+				setCardsRevealed(true);
+				setTimeout(() => setCardsRevealed(false), 2000);
 			}
 		}
 	};
-
+	const startNewGame = () => {
+		navigate("/singleplayer", { state: { gridSize } });
+	};
 	return (
 		<div className="single-game-container">
 			<h1>Single Player - Matching Game</h1>
-
-			{gameState.matched.length > 0 && (
+			{gameState.cards.length > 0 && (
 				<div className="resume-section">
 					<h2>Resume Your Last Game?</h2>
-					<button onClick={resumeGame} className="resume-btn">Resume</button>
+					<button onClick={resumeGame} className="resume-btn">
+						Resume
+					</button>
 				</div>
 			)}
-
-			<h2>Grid Size: {gridSize}x{gridSize}</h2>
-
+			<h2>
+				Grid Size: {gridSize}x{gridSize}
+			</h2>
 			<div className="game-controls">
 				<BackButton />
-				<button onClick={() => navigate("/singleplayer")} className="reset-btn">Start New Game</button>
+				<button onClick={startNewGame} className="reset-btn">
+					Start New Game
+				</button>
 			</div>
-
 			<div
 				className="game-grid"
 				style={{
@@ -73,19 +111,23 @@ export default function ResumeGaame() {
 					gridTemplateRows: `repeat(${gridSize}, 1fr)`,
 				}}
 			>
-				{Array.from({ length: totalCards }).map((_, index) => (
+				{gameState.cards.map((card) => (
 					<div
-						className={`game-item ${gameState.matched.includes(index) ? "matched" : ""}`}
-						key={index}
+						key={card.id}
+						className={`game-item ${card.matched ? "matched" : ""}`}
 					>
-						Card {index + 1}
+						<img
+							src={
+								card.matched || card.flipped || cardsRevealed
+									? card.image
+									: "/back.png"
+							}
+							alt="Card"
+							className="card-image"
+						/>
 					</div>
 				))}
 			</div>
 		</div>
 	);
 }
-
-
-
-
