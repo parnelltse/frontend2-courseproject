@@ -195,7 +195,6 @@ export default function SingleGame() {
 				<GameHistory scores={gameHistory} />
 				<BackButton />
 			</div>
-
 			<Footer />
 		</div>
 	);
