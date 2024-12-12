@@ -14,6 +14,7 @@ const cardImages = [
 	"/card-6.png",
 ];
 export default function MultiGame() {
+
 	const location = useLocation();
 	const { gridSize } = location.state || { gridSize: 4 };
 	const totalCards = gridSize * gridSize;
