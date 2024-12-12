@@ -1,9 +1,12 @@
 body {
 	background-image: url("./assets/background.jpg");
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
 }
 
 /* Home page */
@@ -17,6 +20,7 @@ body {
 	padding-top: 15vh;
 }
 .header {
+	position: sticky;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
@@ -238,12 +242,14 @@ img {
 }
 
 .game-grid {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center; /* Center the grid */
+	display: grid;
+	grid-template-columns: repeat(4, 1fr); /* Create 4 columns */
+	grid-template-rows: repeat(4, auto); /* Create 4 rows, height adjusts automatically */
 	gap: 20px; /* Space between cards */
 	padding: 100px 100px 0 100px;
+	justify-content: center; /* Optional: center the grid if the container has extra space */
 }
+
 
 .game-item {
 	background-color: #c5d9e8; /* Background color for game items */
@@ -673,7 +679,7 @@ button:hover {
 	background-color: #ca93f1;
 	color: rgb(34, 30, 30);
 	width: 100%;
-	position: absolute;
+	position: sticky;
 	bottom: 0;
 	box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
